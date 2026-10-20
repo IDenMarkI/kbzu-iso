@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d12">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="КБЖВ">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<title>КБЖВ</title>
+<style>
+:root{--bg:#0b0e13;--c:#161a21;--c2:#222833;--t:#f3f5f9;--m:#8b93a7;--a:#f5a623;--p:#60a5fa;--f:#fbbf24;--v:#5eead4;--r:#ff6b8b;box-sizing:border-box;padding-top:max(env(safe-area-inset-top,0px),var(--safe-area-inset-top,0px));padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root{--bg:#f2f4f9;--c:#fff;--c2:#e8ebf3;--t:#14161d;--m:#6b7285}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
+body{background:var(--bg);color:var(--t);font:15px/1.4 Inter,-apple-system,system-ui,Roboto,sans-serif;background-image:radial-gradient(520px 300px at 50% -90px,#1b8aa655,transparent);background-repeat:no-repeat}
+#app{max-width:480px;margin:auto;padding:12px 14px 200px}
+h2{margin:6px 0 14px;font-size:26px;letter-spacing:-.5px}h4{margin:12px 0 2px}
+small{color:var(--m);font-size:12.5px}i{font-style:normal;color:var(--m);font-weight:400;font-size:12px}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.card{background:var(--c);border-radius:24px;padding:14px 16px;margin-bottom:12px;border:1px solid #ffffff0d}
+@keyframes up{from{opacity:0;transform:translateY(12px)}}
+.hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.hd button{width:40px;height:40px;border-radius:50%;background:var(--c);font-size:22px}
+.wk{display:flex;align-items:center;gap:2px;margin-bottom:12px}.wk>button{color:var(--m);font-size:22px;width:24px}
+.wd{flex:1;display:flex;flex-direction:column;align-items:center;padding:8px 0;border-radius:18px;color:var(--m)}.wd b{color:var(--t);font-size:17px}.wd small{font-size:11px;letter-spacing:.5px}.wd.on{background:var(--c2)}
+.sr2{display:flex;justify-content:space-between;align-items:baseline}.big{font-size:38px;font-weight:700;letter-spacing:-1px;line-height:1.1}
+.bar{height:6px;background:var(--c2);border-radius:6px;overflow:hidden}.bar u{display:block;height:100%;width:0;border-radius:6px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+u.p{background:var(--p)}u.f{background:var(--f)}u.v{background:var(--v)}
+.macros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.mc{background:var(--c);border-radius:20px;padding:10px 12px;border:1px solid #ffffff0d}.mc small{letter-spacing:1px}.mc b{display:block;font-size:22px;margin:2px 0 6px}
+.cp{color:var(--p)}.cf{color:var(--f)}.cv{color:var(--v)}
+.chips2{display:flex;gap:8px;overflow-x:auto;margin:0 -14px 12px;padding:2px 14px;scrollbar-width:none}.chips2::-webkit-scrollbar{display:none}
+.pill{flex:0 0 auto;display:flex;align-items:center;gap:6px;background:var(--c);border:1px solid #ffffff0d;border-radius:16px;padding:7px 11px;font-size:13px;white-space:nowrap}.pill b{font-weight:600}.pill.ov b{color:var(--r)}
+.meal{padding:0;overflow:hidden}.meal .mh{padding:14px 16px;display:flex;align-items:center;gap:12px}
+.ico{width:42px;height:42px;border-radius:50%;background:var(--c2);display:flex;align-items:center;justify-content:center;font-size:20px}
+.mt{flex:1}.mt b{display:block;font-size:17px}.kc{font-weight:600}
+.chev{width:34px;height:34px;border-radius:50%;background:var(--c2);display:flex;align-items:center;justify-content:center}
+.meal.op .mh{background:#f5a6231f}.meal.op .chev{background:var(--a);color:#1a1200}.mb{padding:2px 16px 14px}
+.sr{display:flex;gap:8px;margin-top:10px}.find{flex:1;text-align:left;padding:13px 14px;border-radius:16px;background:var(--c2);color:var(--m)}.mk{padding:13px 14px;border-radius:16px;background:var(--c2)}
+.mh{display:flex;align-items:center;gap:10px}.mh span{flex:0 0 auto}
+.row{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid #ffffff0f;margin-top:10px}.row>div{flex:1;min-width:0}.row span{font-weight:600}
+.x{width:30px;height:30px;font-size:20px;color:var(--m)}
+.wb{display:flex;gap:8px;margin-top:12px}.wb button{flex:1;padding:10px 0;border-radius:14px;background:var(--c2)}
+#aibar{position:fixed;left:0;right:0;bottom:calc(78px + env(safe-area-inset-bottom,0px));display:flex;gap:8px;padding:0 14px;max-width:480px;margin:auto;z-index:6}
+#aibar .ic,#aibar .send{width:48px;height:48px;border-radius:50%;background:var(--c2);flex:none;font-size:20px;border:1px solid #ffffff14}#aibar .send{background:var(--a);color:#1a1200}
+#aibar input{flex:1;margin:0;border-radius:24px;background:var(--c);border:1.5px solid #f5a62366;padding:0 16px;height:48px}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;padding:0 12px calc(10px + env(safe-area-inset-bottom,0px));z-index:5}
+nav div{width:100%;max-width:460px;display:flex;justify-content:space-around;align-items:center;background:color-mix(in srgb,var(--c) 85%,transparent);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-radius:28px;padding:6px;border:1px solid #ffffff14}
+nav button{display:flex;flex-direction:column;align-items:center;font-size:19px;color:var(--m);padding:3px 6px;transition:.3s;min-width:58px}nav button small{font-size:10px}nav button.on{color:var(--t)}nav button.on small{color:var(--a)}
+.seg{display:flex;background:var(--c);border-radius:16px;padding:4px;margin-bottom:14px}.seg button{flex:1;padding:8px;border-radius:12px;color:var(--m);transition:.3s}.seg .on{background:var(--c2);color:var(--t)}
+.plot{position:relative;height:150px;margin:8px 0 26px}.chart{display:flex;gap:3px;height:100%}.col{flex:1;position:relative;display:flex;align-items:flex-end;height:100%}
+.col u{display:block;width:100%;height:0;border-radius:6px 6px 3px 3px;background:linear-gradient(180deg,var(--a),#ffd37a);transition:height 1s cubic-bezier(.2,.8,.2,1)}.col u.ov{background:linear-gradient(180deg,#ff6b8b,#ffb454)}
+.col small{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:10px;white-space:nowrap}
+.gl{position:absolute;left:0;right:0;border-top:1.5px dashed #8b93a799;z-index:1}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}.grid .mc b{font-size:22px;margin:2px 0 0}
+label{display:block;margin-bottom:12px;color:var(--m);font-size:12.5px}
+input,select,textarea{display:block;width:100%;margin-top:4px;background:var(--c2);color:var(--t);border:0;border-radius:14px;padding:12px 14px;font:inherit;font-size:16px;outline:none}textarea{resize:none}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.btn{width:100%;padding:15px;border-radius:18px;background:var(--a);color:#1a1200;font-weight:600;font-size:16px;margin-top:6px}.btn.ghost{background:var(--c2);color:var(--t)}
+#sh{position:fixed;inset:0;display:none;background:#0009;z-index:10;align-items:flex-end;justify-content:center}#sh.on{display:flex}
+.pn{width:100%;max-width:480px;max-height:90vh;overflow:auto;background:var(--c);border-radius:28px 28px 0 0;padding:10px 16px calc(18px + env(safe-area-inset-bottom,0px));animation:sl .42s cubic-bezier(.22,.9,.3,1)}
+@keyframes sl{from{transform:translateY(100%)}}
+.gr{width:40px;height:4px;border-radius:4px;background:var(--c2);margin:0 auto 12px}.top{display:flex;align-items:center;gap:8px;margin-bottom:8px}.top input{margin:0}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.chips span{padding:8px 12px;border-radius:14px;background:var(--c2);color:var(--m)}.chips .on{background:var(--a);color:#1a1200}
+#pv{background:var(--c2);box-shadow:none;border:0}
+#cam{position:fixed;inset:0;background:#000;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}#cam video{width:100%;max-height:70vh;object-fit:cover}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(150px + env(safe-area-inset-bottom,0px));background:#000d;color:#fff;padding:10px 14px;border-radius:14px;z-index:30;opacity:0;pointer-events:none;transition:.3s;max-width:90%;text-align:center;font-size:13px}#toast.on{opacity:1}
+.spin{width:28px;height:28px;border-radius:50%;border:3px solid var(--c2);border-top-color:var(--a);margin:auto;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+ body::before{content:"";position:fixed;top:0;left:0;right:0;height:max(env(safe-area-inset-top,0px),var(--safe-area-inset-top,0px));background:var(--bg);z-index:9;pointer-events:none}
+@keyframes inr{from{opacity:0;transform:translateX(26px)}}@keyframes inl{from{opacity:0;transform:translateX(-26px)}}@keyframes fd{from{opacity:0}}@keyframes fo{to{opacity:0}}@keyframes so{to{transform:translateY(100%)}}@keyframes dn{from{opacity:0;transform:translateY(-8px)}}
+@keyframes fi{from{opacity:0}}
+#app.fx>*{animation:fi .22s ease both}
+.pop{animation:dn .35s cubic-bezier(.22,.9,.3,1)}
+#sh.on{animation:fd .25s both}#sh.on.out{animation:fo .22s both}#sh.on.out .pn{animation:so .22s cubic-bezier(.4,0,1,1) both}
+button,.row,.pill,.chips span{transition:transform .18s cubic-bezier(.2,.9,.3,1),opacity .18s,background-color .25s}
+button:active,.pill:active,.chips span:active{transform:scale(.95)}.row:active{opacity:.6}nav button:active{transform:scale(.9)}
+.bar u{transition:width .9s cubic-bezier(.22,.9,.3,1)}.col u{transition:height .9s cubic-bezier(.22,.9,.3,1)}
+@media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.mi{background:var(--c2);border-radius:16px;padding:10px 12px;min-width:0}.mi .mn{font-size:12.5px;color:var(--m);display:flex;gap:6px;align-items:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mi b{display:block;font-size:17px;margin:3px 0 7px}.mi .bar{background:var(--c)}.mi small{display:block;margin-top:5px;font-size:10.5px}.mi.ov b{color:var(--r)}u.m{background:var(--v)}u.o{background:var(--r)}
+.card ul{margin:4px 0 8px;padding-left:18px}.card li{margin:4px 0}.sc{background:var(--a);color:#1a1200;border-radius:12px;padding:2px 10px;font-weight:700}
+</style></head><body>
+<div id="app"></div>
+<div id="aibar"><button class="ic" onclick="openAI(1)">📷</button><button class="ic" id="mic" onclick="dictate('#aq',1)">🎤</button><input id="aq" placeholder="Що ви з’їли? Напр.: 2 яйця і тост" onkeydown="if(event.key=='Enter')sendAI()"><button class="send" onclick="sendAI()">➤</button></div>
+<div id="sh"></div><div id="toast"></div>
+<nav><div>
+<button data-v="t" onclick="go('t')">🍽<small>Сьогодні</small></button>
+<button data-v="a" onclick="go('a')">🏃<small>Активність</small></button>
+<button data-v="r" onclick="go('r')">✨<small>Поради</small></button>
+<button data-v="s" onclick="go('s')">📊<small>Статистика</small></button>
+<button data-v="p" onclick="go('p')">👤<small>Профіль</small></button>
+</div></nav>
+<script>
+const $=s=>document.querySelector(s),R=Math.round,r1=x=>Math.round(x*10)/10;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
+const MN=['Сніданок','Обід','Вечеря','Перекус'],MI=['🌅','🍲','🌙','🍎'];
+const MO=['січ','лют','бер','кві','тра','чер','лип','сер','вер','жов','лис','гру'],WD=['нд','пн','вт','ср','чт','пт','сб'];
+let S;try{S=JSON.parse(localStorage.getItem('kbzhu'))}catch(e){}
+S=S||{log:{},custom:[],prof:{sex:'m',age:30,h:175,w:75,act:1.45,aim:0},goal:null};
+const save=()=>{try{localStorage.setItem('kbzhu',JSON.stringify(S))}catch(e){}try{remSync()}catch(e){}};
+function calc(){const p=S.prof,w=p.w,bf=+p.bf||0,lb=bf>0&&bf<60?w*(1-bf/100):0,m=p.sex=='m';
+const bmr=lb?370+21.6*lb:10*w+6.25*p.h-5*p.age+(m?5:-161);
+const k=R(Math.max(bmr*p.act*(1+p.aim),m?1500:1200)),pk=p.aim<0?2:p.aim>0?1.8:1.6,pr=R(Math.min(w*pk,.35*k/4)),f=R(Math.max(.8*w,.25*k/9));
+S.goal={bmr:R(bmr),k,p:pr,f,v:Math.max(0,R((k-4*pr-9*f)/4)),w:R(w*33/50)*50+(p.act>=1.55?500:0),m:{fi:R(14*k/1000),su:R(.1*k/4),sf:R(.1*k/9),na:2000,ca:(!m&&p.age>50)?1200:1000,fe:(!m&&p.age<51)?18:8,po:3500,mg:p.age<31?(m?400:310):(m?420:320)}}}
+S.water=S.water||{};S.mc=S.mc||{};S.hc=S.hc||{};S.rep=S.rep||{};
+S.prof.act=[1.2,1.375,1.55,1.725,1.9].reduce((a,b)=>Math.abs(b-S.prof.act)<Math.abs(a-S.prof.act)?b:a);
+if(Math.abs(S.prof.aim)>1)S.prof.aim=S.prof.aim<0?-.2:S.prof.aim>0?.1:0;
+if(!S.goal||!S.goal.m)calc();
+const dk=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const tot=es=>es.reduce((a,e)=>({k:a.k+e.k,p:a.p+e.p,f:a.f+e.f,v:a.v+e.v}),{k:0,p:0,f:0,v:0});
+const MD=[['fi','Клітковина','г',1,'🌿'],['su','Цукор','г',0,'🍬'],['sf','Насичені жири','г',0,'🥓'],['na','Натрій','мг',0,'🧂'],['ca','Кальцій','мг',1,'🦴'],['fe','Залізо','мг',1,'🩸'],['po','Калій','мг',1,'🍌'],['mg','Магній','мг',1,'⚡']];
+const sx=(x,f)=>{if(!x)return null;const o={};for(const k in x)if(x[k]!=null&&!isNaN(x[k]))o[k]=r1(x[k]*f);return Object.keys(o).length?o:null};
+const getX=it=>(it.x&&sx(it.x,1)&&it.x)||(S.mc||{})[it.n]||null;
+const mx=n=>{const g=(a,m)=>n[a]==null?undefined:r1(n[a]*(m||1)),na=n.sodium_100g!=null?n.sodium_100g:(n.salt_100g!=null?n.salt_100g/2.5:null);return{fi:g('fiber_100g'),su:g('sugars_100g'),sf:g('saturated-fat_100g'),na:na==null?undefined:R(na*1000),ca:g('calcium_100g',1000),fe:g('iron_100g',1000),po:g('potassium_100g',1000),mg:g('magnesium_100g',1000)}};
+const DR=/(?:^|[^\p{L}])(?:чай|чаю|чаї|чаєм|кава|кави|каву|кавою|кофе|еспресо|американо|капучино|латте|лате|мокко|мокачино|раф|макіато|флет-?вайт|матча|coffee|tea|espresso|latte|cappuccino|americano|mocha|matcha)(?![\p{L}])/iu,DX=/печив|торт|цукерк|десерт|морозив|желе|драже|батончик|шоколад|йогурт|вафл|круасан|кекс|пиріж|зерн|мелен|сироп/i;
+const isDr=e=>DR.test(e.n||'')&&!DX.test(e.n||'');
+const wdr=d=>(S.log[dk(d)]||[]).reduce((a,e)=>a+(isDr(e)?(+e.g||0):0),0);
+const wtot=d=>(S.water[dk(d)]||0)+wdr(d);
+const wa=days=>{const a=days.map(o=>wtot(o.d||new Date())).filter(Boolean);return a.length?R(a.reduce((x,y)=>x+y)/a.length):0};
+const fa=lg=>{const a=lg.map(o=>o.es.reduce((s,e)=>s+((e.x&&e.x.fi)||0),0)).filter(Boolean);return a.length?r1(a.reduce((x,y)=>x+y)/a.length):0};
+function aw(n){S.water[dk(day)]=Math.max(0,(S.water[dk(day)]||0)+n);save();buzz();render()}
+let mOpen=false;
+function tgMin(){mOpen=!mOpen;render();const e=document.querySelector('[data-mg]');e&&e.classList.add('pop')}
+function micro(es){const m=S.goal.m,s={};MD.forEach(d=>s[d[0]]=0);es.forEach(e=>e.x&&MD.forEach(d=>s[d[0]]+=e.x[d[0]]||0));
+const chips=`<div class="chips2" style="margin-bottom:${mOpen?8:12}px">${MD.map(d=>{const v=s[d[0]],ov=!d[3]&&v>m[d[0]];return `<button class="pill${ov?' ov':''}" onclick="tgMin()"><span>${d[4]}</span><b>${r1(v)}</b><i>${d[2]}</i></button>`}).join('')}</div>`,
+grid=mOpen?`<div class="card" data-mg="1" style="margin-top:0"><div class="mh" onclick="tgMin()"><b>Мікроелементи</b><small>за день · тап — згорнути</small></div><div class="mg">${MD.map(d=>{const v=s[d[0]],mx=m[d[0]],ov=!d[3]&&v>mx,p=Math.min(100,mx?v/mx*100:0);return `<div class="mi${ov?' ov':''}"><div class="mn"><span>${d[4]}</span>${d[1]}</div><b>${r1(v)}<i> / ${mx} ${d[2]}</i></b><div class="bar"><u class="${ov?'o':'m'}" data-w="${p}"></u></div><small>${d[3]?'норма':'не більше'}</small></div>`}).join('')}</div></div>`:'';
+return chips+grid}
+function water(){const dr=wdr(day),w=wtot(day),g=S.goal.w;return `<div class="card"><div class="mh"><span>💧 <b>Вода</b></span><small>${w} / ${g} мл</small></div>${dr?`<small style="display:block;margin-top:4px">у т. ч. чай і кава з харчування: ${dr} мл</small>`:''}<div class="bar" style="margin-top:10px"><u style="background:#38bdf8" data-w="${Math.min(100,w/g*100)}"></u></div><div class="wb"><button onclick="aw(150)">+150</button><button onclick="aw(250)">+250</button><button onclick="aw(500)">+500</button><button onclick="aw(-250)">−250</button></div></div>`}
+const gm=()=>{const m=S.goal.m;return `<div class="card"><b>Норми води та мікроелементів</b><small> (позначені «макс» не перевищувати)</small><br><br><div class="f2">${inp('Вода, мл','w',S.goal.w,'sg')}${MD.map(d=>inp(d[1]+', '+d[2]+(d[3]?'':' (макс)'),d[0],m[d[0]],'sgm')).join('')}</div></div>`};
+function sgm(k,v){S.goal.m[k]=+v;save()}
+const fixK=x=>{const c=4*x.p+9*x.f+4*x.v;if(c>20&&Math.abs(x.k-c)>.2*c&&!/пив|вин|горілк|віскі|алкогол|коктейл|шампан|лікер/i.test(x.n))x.k=R(c);return x};
+let view='t',per='w',day=new Date(),sh=null,rs=0;
+const lab=d=>dk(d)==dk(new Date())?'Сьогодні':d.getDate()+' '+MO[d.getMonth()]+' '+d.getFullYear();
+const buzz=()=>{try{navigator.vibrate&&navigator.vibrate(12)}catch(e){}};
+let fxNext=true,fxDir='fu';
+function go(v){if(v==view){window.scrollTo({top:0,behavior:'smooth'});return}fxNext=true;view=v;buzz();render();window.scrollTo(0,0)}
+function render(){const app=$('#app'),same=!fxNext&&app.dataset.v==view,q=a=>[...app.querySelectorAll(a)];
+const pw=same?q('[data-w]').map(e=>e.style.width):[],ph=same?q('[data-h]').map(e=>e.style.height):[],pn=same?q('[data-n]').map(e=>e.textContent):[];
+app.innerHTML=({t:today,a:activity,r:advice,s:stats,p:prof})[view]();app.dataset.v=view;app.className=fxNext?'fx '+fxDir:'';fxNext=false;
+if(same){const a=q('[data-w]'),b=q('[data-h]'),c=q('[data-n]');if(a.length==pw.length)a.forEach((e,i)=>e.style.width=pw[i]);if(b.length==ph.length)b.forEach((e,i)=>e.style.height=ph[i]);if(c.length==pn.length)c.forEach((e,i)=>e.dataset.f=pn[i])}
+$('#aibar').style.display=view=='t'?'flex':'none';{const m=$('#mic');if(m)m.style.display=NAT()?'':'none'}
+document.querySelectorAll('nav [data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v==view));setTimeout(anim,30);wsync();if(view=='r')autoRep();if(view=='p')ver()}
+function ver(){try{Capacitor.Plugins.App.getInfo().then(i=>{const e=$('#ver');if(e)e.textContent='Версія '+i.version+' · збірка '+i.build})}catch(e){}}
+function anim(){document.querySelectorAll('[data-to]').forEach(e=>e.style.strokeDashoffset=e.dataset.to);
+document.querySelectorAll('[data-w]').forEach(e=>e.style.width=e.dataset.w+'%');
+document.querySelectorAll('[data-h]').forEach(e=>e.style.height=e.dataset.h+'%');
+document.querySelectorAll('[data-n]').forEach(e=>{const to=+e.dataset.n,fr=+e.dataset.f||0,t0=performance.now();(function f(t){const x=Math.min((t-t0)/800,1);e.textContent=R(fr+(to-fr)*(1-Math.pow(1-x,3)));if(x<1)requestAnimationFrame(f)})(t0)})}
+function mv(n){day=new Date(day);day.setDate(day.getDate()+n);render()}
+function del(i){S.log[dk(day)].splice(i,1);save();buzz();render()}
+function today(){const es=S.log[dk(day)]||[],t=tot(es),g=G(day),left=g.k-t.k,pc=Math.min(100,t.k/g.k*100);
+const mon=new Date(day);mon.setDate(mon.getDate()-(mon.getDay()+6)%7);
+const wk=[...Array(7)].map((_,i)=>{const d=new Date(mon);d.setDate(mon.getDate()+i);return `<button class="wd${dk(d)==dk(day)?' on':''}" onclick="sd('${dk(d)}')"><small>${WD2[i]}</small><b>${d.getDate()}</b></button>`}).join('');
+const mac=[['БІЛ','p'],['ЖИР','f'],['ВУГЛ','v']].map(x=>`<div class="mc"><small>${x[0]}</small><b class="c${x[1]}">${R(t[x[1]])}<i> /${g[x[1]]}</i></b><div class="bar"><u class="${x[1]}" data-w="${Math.min(100,t[x[1]]/g[x[1]]*100)}"></u></div></div>`).join('');
+const ml=MN.map((n,m)=>{const l=es.map((e,i)=>({e,i})).filter(o=>o.e.m==m),s=l.reduce((a,o)=>a+o.e.k,0),op=ex[m];
+return `<div class="card meal${op?' op':''}"><div class="mh" onclick="tgm(${m})"><span class="ico">${MI[m]}</span><div class="mt"><b>${n}</b><small>${l.length?l.length+' поз.':'Поки порожньо'}</small></div><span class="kc">${s} ккал</span><span class="chev">${op?'⌃':'⌄'}</span></div>${op?`<div class="mb" data-mb="${m}">${l.map(o=>`<div class="row" onclick="editE(${o.i})"><div><div>${esc(o.e.n)}</div><small>${o.e.g} г · Б ${r1(o.e.p)} Ж ${r1(o.e.f)} В ${r1(o.e.v)}</small></div><span>${o.e.k}</span><button class="x" onclick="event.stopPropagation();del(${o.i})">×</button></div>`).join('')}<div class="sr"><button class="find" onclick="openAdd(${m})">🔍 Знайти продукт…</button><button class="mk" onclick="openCustom(${m})">+ Створити</button></div></div>`:''}</div>`}).join('');
+return `<div class="wk" data-sw="day"><button onclick="mv(-7)">‹</button>${wk}<button onclick="mv(7)">›</button></div>
+<div class="card"><div class="sr2"><div><b class="big" data-n="${t.k}">0</b> <small>З’ЇДЕНО</small></div><div style="text-align:right"><b class="big">${Math.abs(left)}</b> <small>${left>=0?'ЛИШИЛОСЬ':'ПЕРЕБІР'}</small></div></div><div class="bar" style="margin:10px 0 6px"><u style="background:linear-gradient(90deg,var(--a),#ffd37a)" data-w="${pc}"></u></div><small style="display:block;text-align:right">норма ${g.base} ккал</small>${g.ad?`<small style="display:block;text-align:right;font-size:11px">+${g.ad} ккал за тренування · можна з’їсти до ${g.k}</small>`:''}</div>
+<div class="macros">${mac}</div>${micro(es)}${ml}${water()}`}
+function rng(n){const o=[];for(let i=n-1;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const es=S.log[dk(d)]||[];o.push({d,es,t:tot(es),g:G(d).k})}return o}
+function stats(){const g=S.goal;let bars=[],days;
+if(per=='d'){const es=S.log[dk(new Date())]||[];days=[{t:tot(es),es}];bars=MN.map((n,m)=>({l:n.slice(0,4),v:es.filter(e=>e.m==m).reduce((a,e)=>a+e.k,0)}))}
+else{days=rng(per=='w'?7:per=='m'?30:365);
+if(per=='y'){const mm={};days.forEach(o=>{if(o.es.length){const k=o.d.getFullYear()*12+o.d.getMonth();(mm[k]=mm[k]||[]).push(o.t.k)}});
+for(let i=11;i>=0;i--){const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-i);const a=mm[d.getFullYear()*12+d.getMonth()]||[];bars.push({l:MO[d.getMonth()],v:a.length?R(a.reduce((x,y)=>x+y)/a.length):0})}}
+else bars=days.map(o=>({l:per=='w'?WD[o.d.getDay()]:o.d.getDate(),v:o.t.k,g:o.g}))}
+const lg=days.filter(o=>o.es.length),av=k=>lg.length?R(lg.reduce((a,o)=>a+o.t[k],0)/lg.length):0;
+const all=rng(365).reverse();let st=0,i=all[0].es.length?0:1;for(;i<all.length&&all[i].es.length;i++)st++;
+const max=Math.max(g.k*1.15,...bars.map(b=>b.v));
+const tabs=[['d','День'],['w','Тиждень'],['m','Місяць'],['y','Рік']].map(x=>`<button class="${per==x[0]?'on':''}" onclick="per='${x[0]}';render()">${x[1]}</button>`).join('');
+const cell=(l,v,u)=>`<div class="mc"><small>${l}</small><b>${v}<i> ${u}</i></b></div>`;
+return `<h2>Статистика</h2><div class="seg" data-sw="per">${tabs}</div>
+<div class="card" data-sw="per"><small>${per=='d'?'Калорії за прийомами їжі':per=='y'?'Середньо за день по місяцях':'Калорії по днях'} · пунктир — норма</small>
+<div class="plot"><i class="gl" style="bottom:${g.k/max*100}%"></i><div class="chart">${bars.map((b,i)=>`<div class="col"><u class="${b.v>(b.g||g.k)*1.05?'ov':''}" data-h="${b.v/max*100}"></u><small>${per=='m'&&i%5?'':b.l}</small></div>`).join('')}</div></div></div>
+<div class="grid">${cell('Середньо калорій',av('k'),'ккал')}${cell('Серія днів',st,'🔥')}${cell('Білки',av('p'),'г')}${cell('Жири',av('f'),'г')}${cell('Вуглеводи',av('v'),'г')}${cell('Днів із записами',lg.length,'')}${cell('Вода',wa(days),'мл')}${cell('Клітковина',fa(lg),'г')}</div>`}
+const inp=(l,k,v,fn)=>`<label>${l}<input type="number" inputmode="decimal" value="${v}" onchange="${fn}('${k}',this.value)"></label>`;
+function sp(k,v){S.prof[k]=k=='sex'?v:+v;calc();save();render()}
+function sg(k,v){S.goal[k]=+v;save()}
+function prof(){const p=S.prof,g=S.goal,o=(v,t,c)=>`<option value="${v}" ${c==v?'selected':''}>${t}</option>`;
+return `<h2>Профіль</h2><div class="card"><b>Параметри</b><br><br>
+<label>Стать<select onchange="sp('sex',this.value)">${o('m','Чоловік',p.sex)}${o('f','Жінка',p.sex)}</select></label>
+<div class="f2">${inp('Вік','age',p.age,'sp')}${inp('Зріст, см','h',p.h,'sp')}</div>${inp('Вага, кг','w',p.w,'sp')}${inp('% жиру в тілі (необов’язково, для точнішого розрахунку)','bf',p.bf||'','sp')}
+<label>Активність<select onchange="sp('act',this.value)">${o(1.2,'Сидяча робота, без тренувань',p.act)}${o(1.375,'Легка (1–3 тренування/тиждень)',p.act)}${o(1.55,'Помірна (3–5 тренувань)',p.act)}${o(1.725,'Висока (6–7 тренувань)',p.act)}${o(1.9,'Дуже висока (фізична праця + спорт)',p.act)}</select></label>
+<label>Ціль<select onchange="sp('aim',this.value)">${o(-.2,'Схуднення (−20% калорій)',p.aim)}${o(-.1,'Легке схуднення (−10%)',p.aim)}${o(0,'Підтримка',p.aim)}${o(.1,'Набір маси (+10%)',p.aim)}</select></label></div>
+<div class="card"><b>Денна норма</b><small> (Міффлін-Сан Жеор або Кетч-Макардл, якщо вказано % жиру, × активність, ± ціль. Білок 1,6–2 г/кг, жири не менше 0,8 г/кг, решта вуглеводи. Можна змінити вручну)</small><br><br>
+<div class="f2">${inp('Калорії','k',g.k,'sg')}${inp('Білки, г','p',g.p,'sg')}${inp('Жири, г','f',g.f,'sg')}${inp('Вуглеводи, г','v',g.v,'sg')}</div></div>
+${gm()}${mine()}${remCard()}${aiCard()}<small>Значення в базі продуктів орієнтовні й залежать від виробника та способу приготування. Звіряйте з упаковкою. Дані зберігаються лише на вашому пристрої.</small><br><br>
+<button class="btn ghost" onclick="bkShare()">Надіслати копію (Telegram, пошта…)</button><br><br><button class="btn ghost" onclick="bk()">Копіювати резервну копію</button><br><br><button class="btn ghost" onclick="rb()">Відновити з копії</button><br><br><button class="btn ghost" id="rs" onclick="rst()">Скинути всі дані</button><br><br><small id="ver" style="display:block;text-align:center"></small>`}
+function rst(){if(!rs){rs=1;$('#rs').textContent='Натисніть ще раз для підтвердження';return}try{localStorage.removeItem('kbzhu')}catch(e){}location.reload()}
+function openAdd(m){const h=new Date().getHours();sh={m:m==null?(h<11?0:h<16?1:h<21?2:3):m};drawList()}
+function sc(){sh=null;const e=$('#sh');e.classList.add('out');clearTimeout(window._sc);window._sc=setTimeout(()=>{if(!sh){e.className='';e.innerHTML=''}},230)}
+function drawList(){sh.code='';const e=$('#sh');e.className='on';e.innerHTML=`<div class="pn"><div class="gr"></div><div class="top"><input id="q" placeholder="Знайти продукт…" oninput="res()" autocomplete="off"><button class="x" onclick="scan()">📷</button><button class="x" onclick="sc()">×</button></div><div id="res"></div><button class="btn ghost" onclick="online()">🌐 Шукати в Open Food Facts</button><button class="btn ghost" style="margin-top:8px" onclick="drawCustom()">+ Власний продукт</button></div>`;res()}
+function res(){const q=($('#q').value||'').toLowerCase().trim();sh.l=S.custom.filter(x=>!q||x.n.toLowerCase().includes(q)).slice(0,40);
+$('#res').innerHTML=rows(sh.l)||'<small>Тут ваші власні продукти. Для всього іншого натисніть «Шукати в Open Food Facts» або напишіть ШІ внизу екрана.</small>'}
+function pick(i){sh.it=sh.l[i];sh.g=null;drawDet()}
+function drawDet(){const x=sh.it;$('#sh').innerHTML=`<div class="pn"><div class="gr"></div><div class="top"><button class="x" onclick="drawList()">‹</button><b>${esc(x.n)}</b></div><label>Вага, г<input id="gm" type="number" inputmode="decimal" value="${sh.g||x.g}" oninput="pv()"></label><div class="chips">${MN.map((n,m)=>`<span class="${m==sh.m?'on':''}" onclick="sh.m=${m};drawDet()">${n}</span>`).join('')}</div><div id="pv" class="card"></div><div id="mi" style="margin-bottom:10px"></div><button class="btn" onclick="add()">Додати</button></div>`;pv()}
+function pv(){const x=sh.it,g=+$('#gm').value||0,f=g/100;sh.g=g;$('#pv').innerHTML=`<b style="font-size:22px">${R(x.k*f)} ккал</b><br><small>Б ${r1(x.p*f)} · Ж ${r1(x.f*f)} · В ${r1(x.v*f)}</small>`;
+const m=sx(getX(x),f);$('#mi').innerHTML=m?'<small>'+MD.filter(d=>m[d[0]]!=null).map(d=>d[1]+' '+m[d[0]]+' '+d[2]).join(' · ')+'</small>':(S.ai&&S.ai.key?'<button class="btn ghost" onclick="micAI()">🧪 Дізнатись мінерали (ШІ)</button>':'<small>Немає даних про клітковину й мінерали (ключ ШІ в Профілі дозволить їх оцінити)</small>')}
+async function micAI(){const b=$('#mi');b.innerHTML='<small>Запит до ШІ…</small>';try{const x=await mic(sh.it.n),o={};MD.forEach(d=>o[d[0]]=+x[d[0]]||0);S.mc[sh.it.n]=o;save();pv()}catch(e){b.innerHTML='<small>'+esc(e.message||e)+'</small>'}}
+function add(){const x=sh.it,g=+$('#gm').value||0;if(!g)return;const f=g/100,k=dk(day);(S.log[k]=S.log[k]||[]).push({n:x.n,g,k:R(x.k*f),p:r1(x.p*f),f:r1(x.f*f),v:r1(x.v*f),m:sh.m,x:sx(getX(x),f)||undefined});save();buzz();sc();view='t';render()}
+function drawCustom(){const ed=sh.edit!=null,x=ed?S.custom[sh.edit]:{n:'',k:'',p:'',f:'',v:'',c:sh.code||''},I=(l,id,v,t)=>`<label>${l}<input id="${id}" ${t?'type="number" inputmode="decimal"':''} value="${esc(v)}"></label>`;
+$('#sh').className='on';$('#sh').innerHTML=`<div class="pn"><div class="gr"></div><div class="top"><button class="x" onclick="${ed?'sc()':'drawList()'}">‹</button><b>${ed?'Редагувати продукт':'Власний продукт'} (на 100 г)</b></div>${I('Назва','cn',x.n)}<div class="f2">${I('Ккал','ck',x.k,1)}${I('Білки','cp',x.p,1)}${I('Жири','cf',x.f,1)}${I('Вуглеводи','cv',x.v,1)}</div>${I('Штрихкод (необов’язково)','cc',x.c||'')}<button class="btn" onclick="saveC()">Зберегти</button>${ed?'<button class="btn ghost" style="margin-top:8px" onclick="delC(this)">Видалити</button>':''}</div>`}
+function saveC(){const n=$('#cn').value.trim();if(!n)return;const ed=sh.edit!=null,x={n,k:+$('#ck').value||0,p:+$('#cp').value||0,f:+$('#cf').value||0,v:+$('#cv').value||0,g:ed?(S.custom[sh.edit].g||100):100,c:$('#cc').value.replace(/\D/g,'')};
+if(ed){S.custom[sh.edit]=x;save();sc();render();return}S.custom.unshift(x);save();sh.it=x;sh.g=null;drawDet()}
+function delC(b){if(!sh.dc){sh.dc=1;b.textContent='Натисніть ще раз для видалення';return}S.custom.splice(sh.edit,1);save();sc();render()}
+function editC(i){sh={m:0,edit:i};drawCustom()}
+const mine=()=>S.custom.length?`<div class="card"><b>Мої продукти</b>${S.custom.map((x,i)=>`<div class="row"><div><div>${esc(x.n)}</div><small>${x.k} ккал · Б ${x.p} Ж ${x.f} В ${x.v}${x.c?' · '+esc(x.c):''}</small></div><button class="x" onclick="editC(${i})">✎</button></div>`).join('')}</div>`:'';
+const bkj=()=>JSON.stringify({...S,ai:undefined,qc:undefined,bc:undefined,hcs:undefined});
+function bkShare(){const t=bkj();if(navigator.share)navigator.share({title:'КБЖВ: резервна копія',text:t}).catch(()=>{});else bk()}
+function bk(){try{navigator.clipboard.writeText(bkj()).then(()=>alert('Резервну копію скопійовано. Збережіть її, наприклад, у нотатках.'),()=>alert('Не вдалось скопіювати'))}catch(e){alert('Не вдалось скопіювати')}}
+function rb(){sh={rb:1};const e=$('#sh');e.className='on';e.innerHTML=`<div class="pn"><div class="gr"></div><div class="top"><b style="flex:1;padding:0 6px">Відновити з копії</b><button class="x" onclick="sc()">×</button></div>
+<button class="btn" onclick="rbGo()">Відновити</button>
+<div style="display:flex;gap:8px;margin-top:8px"><button class="btn ghost" style="margin:0" onclick="rbPaste()">📋 Вставити з буфера</button><label class="btn ghost" style="margin:0;text-align:center;cursor:pointer">📁 З файлу<input type="file" accept=".json,.txt,text/plain,application/json" style="display:none" onchange="rbFile(this)"></label></div>
+<textarea id="rbt" rows="5" style="margin-top:10px" placeholder="Або вставте текст копії сюди (довго натисніть → Вставити)"></textarea><small id="rbm" style="display:block;margin-top:8px"></small></div>`}
+async function rbPaste(){try{const t=await navigator.clipboard.readText();$('#rbt').value=t;$('#rbm').textContent=t?'Вставлено '+t.length+' символів. Натисніть «Відновити».':'Буфер порожній'}catch(e){$('#rbm').textContent='Не вдалось прочитати буфер. Довго натисніть у полі нижче → Вставити.'}}
+function rbFile(i){const f=i.files&&i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{$('#rbt').value=String(r.result||'');$('#rbm').textContent='Файл прочитано. Натисніть «Відновити».'};r.readAsText(f)}
+function rbGo(){let t=($('#rbt').value||'').trim();const m=$('#rbm');if(!t){m.textContent='Спочатку вставте копію';return}
+try{const a=t.indexOf('{'),b=t.lastIndexOf('}');if(a<0||b<a)throw new Error('не знайдено дані');const o=JSON.parse(t.slice(a,b+1));if(!o.log||!o.goal)throw new Error('це не копія КБЖВ');o.ai=S.ai;S=o;save();location.reload()}catch(e){m.textContent='Не вдалось відновити: '+(e.message||e)+'. Копіюйте текст повністю, від першої { до останньої }.'}}
+function wsync(){try{const t=tot(S.log[dk(new Date())]||[]),W=Capacitor.Plugins.WidgetBridge||Capacitor.registerPlugin('WidgetBridge'),r=W.update({d:dk(new Date()),k:R(t.k),g:G(new Date()).k,p:R(t.p),f:R(t.f),v:R(t.v)});r&&r.catch&&r.catch(()=>{})}catch(e){}}
+const tn=v=>typeof v=='string'?v:(v&&typeof v=='object'?(v.uk||v.main||v.en||v.ru||Object.values(v)[0]||''):'');
+function offItem(p){const n=p.nutriments||{};let k=n['energy-kcal_100g'];if(k==null&&n['energy_100g']!=null)k=n['energy_100g']/4.184;const nm=tn(p.product_name_uk)||tn(p.product_name)||tn(p.product_name_ru)||tn(p.product_name_en);if(!nm||k==null)return null;const b=[].concat(p.brands||[]).join(',').split(',')[0].trim();return{n:nm+(b?' ('+b+')':''),k:R(k),p:r1(n.proteins_100g||0),f:r1(n.fat_100g||0),v:r1(n.carbohydrates_100g||0),g:+p.serving_quantity||100,x:mx(n),u:[].concat(p.countries_tags||[]).includes('en:ukraine')?1:0}}
+const UA='KBZHU-Tracker/1.2 (personal app)',OFF='https://world.openfoodfacts.org/',FL='fields=code,product_name,product_name_uk,product_name_ru,product_name_en,brands,nutriments,serving_quantity,countries_tags';
+let lastReq=0;
+async function offGet(u){const w=4000-(Date.now()-lastReq);if(w>0)await new Promise(z=>setTimeout(z,w));lastReq=Date.now();const r=await fetch(u,{headers:{'User-Agent':UA,'Accept':'application/json'}});if(!r.ok){const e=new Error('HTTP '+r.status);e.st=r.status;throw e}return r.json()}
+const em=e=>e.st==503||e.st==429?'Open Food Facts зараз обмежує запити (ліміт: 10 пошуків на хвилину з однієї мережевої адреси, а мобільні оператори ділять одну адресу між багатьма людьми). Зачекайте 1–2 хвилини і спробуйте ще раз.':'Помилка: '+(e.message||e);
+const rows=l=>l.map((x,i)=>`<div class="row" onclick="pick(${i})"><div><div>${x.u?'🇺🇦 ':''}${esc(x.n)}</div><small>Б ${x.p} Ж ${x.f} В ${x.v} · порція ${x.g} г</small></div><span>${x.k}<small> /100 г</small></span></div>`).join('');
+async function online(){const q=$('#q').value.trim();if(!q){$('#res').innerHTML='<small>Спочатку введіть назву в полі пошуку, потім натисніть «Шукати онлайн»</small>';return}
+const key=q.toLowerCase();if(S.qc&&S.qc[key]){sh.l=S.qc[key];$('#res').innerHTML=rows(sh.l);return}
+$('#res').innerHTML='<small>Пошук онлайн…</small>';let l=[];
+try{try{const r=await offGet('https://search.openfoodfacts.org/search?page_size=24&q='+encodeURIComponent(q));l=(r.hits||[]).map(offItem).filter(Boolean)}catch(e){if(e.st==503||e.st==429)throw e;const r=await offGet(OFF+'cgi/search.pl?search_simple=1&action=process&json=1&page_size=24&'+FL+'&search_terms='+encodeURIComponent(q));l=(r.products||[]).map(offItem).filter(Boolean)}}
+catch(e){$('#res').innerHTML='<small>'+esc(em(e))+'</small>';return}
+l.sort((a,b)=>b.u-a.u);if(l.length){S.qc=S.qc||{};S.qc[key]=l;const ks=Object.keys(S.qc);if(ks.length>30)delete S.qc[ks[0]];save()}
+sh.l=l;$('#res').innerHTML=rows(l)||'<small>Нічого не знайдено. Додайте власний продукт.</small>'}
+async function byCode(c){c=String(c).replace(/\D/g,'');if(!c)return;sh.code=c;
+const l=S.custom.find(x=>x.c===c)||(S.bc||{})[c];if(l){sh.it=l;sh.g=null;return drawDet()}
+let x=null;try{const r=await offGet(OFF+'api/v2/product/'+c+'?'+FL);x=r.product?offItem(r.product):null}catch(e){if(e.st!=404){alert(em(e));return}}
+if(x){S.bc=S.bc||{};S.bc[c]=x;save();sh.it=x;sh.g=null;drawDet()}else if(confirm('Штрихкоду '+c+' немає в базі Open Food Facts (або там немає калорій). Додати продукт вручну? Наступного разу він знайдеться сам.'))drawCustom()}
+const SYS='Ти нутриціолог у додатку обліку харчування. Для напоїв (чай, кава, сік, молоко тощо) g — це об’єм у мл (1 мл ≈ 1 г). Користувач описує (текстом і/або фото), що з’їв чи випив. Розбий опис на окремі позиції й для кожної визнач вагу порції в грамах (якщо не вказана, візьми типову або оціни за фото). ПРАВИЛА ДЖЕРЕЛ: 1) Якщо це упакований або брендовий продукт (чипси, батончик, йогурт, ковбаса, напій тощо), обов’язково знайди його склад через пошук в інтернеті (Open Food Facts, сайти виробників і магазинів: Сільпо, АТБ, Розетка тощо), візьми значення на 100 г і перерахуй на вагу порції. 2) Для домашніх і ресторанних страв, яких немає в базах, розрахуй самостійно за типовим складом і способом приготування (олія, соус, гарнір), спираючись на таблиці складу (USDA, Скурихін). 3) Для простих продуктів (овочі, фрукти, крупи, м’ясо) використай довідкові таблиці. Значення подавай для ВСІЄЇ порції: k ккал, p білки, f жири, v вуглеводи (г), fi клітковина (г), su цукор (г), sf насичені жири (г), na натрій (мг), ca кальцій (мг), fe залізо (мг), po калій (мг), mg магній (мг). Калорії мають збігатися з 4·p+9·f+4·v (для алкоголю додай 7 ккал на 1 г спирту). n: коротка українська назва. g: вага в грамах. m: 0 сніданок, 1 обід, 2 вечеря, 3 перекус, лише якщо користувач прямо вказав. s: коротко, звідки дані (наприклад «Open Food Facts: Lay’s Люкс з беконом, 100 г» або «розрахунок за складом»). Нотатки користувача до фото мають пріоритет над припущеннями. Відповідай ЛИШЕ JSON-масивом об’єктів без пояснень і без markdown.';
+const GMS=['gemini-3.8-flash','gemini-3.6-flash','gemini-3.5-flash-lite','gemini-3.1-flash-lite','gemini-flash-latest'];
+function gcnt(){const a=S.ai=S.ai||{},k=dk(new Date());a.cn=a.cn||{};a.cn[k]=(a.cn[k]||0)+1;const ks=Object.keys(a.cn).sort();while(ks.length>14)delete a.cn[ks.shift()];save()}
+async function gcall(sys,parts,schema,srch){const a=S.ai||{},um=(a.model||'').trim(),ms=[...new Set([...(um&&!/^gemini-(2\.5|3\.5-flash$)/i.test(um)?[um]:[]),...GMS])];let last;
+const gc=srch?{temperature:.2}:{temperature:.2,responseMimeType:'application/json',responseSchema:schema};
+const body=JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts}],generationConfig:gc,...(srch?{tools:[{google_search:{}}]}:{})});
+for(const m of ms){let r;gcnt();try{r=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+m+':generateContent',{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':a.key},body})}catch(e){last=new Error('Немає зʼєднання з інтернетом');last.st=0;throw last}
+if(r.ok){const j=await r.json(),pp=(((j.candidates||[])[0]||{}).content||{}).parts;if(!pp){last=new Error('Gemini повернув порожню відповідь');last.st=204;continue}const t=pp.map(q=>q.text||'').join('').replace(/```json|```/g,''),mm=t.match(/[\[{][\s\S]*[\]}]/);try{return JSON.parse(mm?mm[0]:t)}catch(e){last=new Error('Gemini повернув некоректний JSON');last.st=422;continue}}
+let msg='';try{msg=(await r.json()).error.message}catch(e){}last=new Error(msg||'HTTP '+r.status);last.st=r.status;
+if(r.status==401||/API key/i.test(msg))throw last;if(srch&&(r.status==400||r.status==403))throw last}
+throw last}
+const NUM={type:'NUMBER'},XP={fi:NUM,su:NUM,sf:NUM,na:NUM,ca:NUM,fe:NUM,po:NUM,mg:NUM};
+const SCH={type:'ARRAY',items:{type:'OBJECT',properties:{n:{type:'STRING'},g:NUM,k:NUM,p:NUM,f:NUM,v:NUM,m:{type:'INTEGER'},s:{type:'STRING'},...XP},required:['n','g','k','p','f','v',...Object.keys(XP)]}};
+async function gem(text,img){const parts=[...(img?[{inline_data:{mime_type:'image/jpeg',data:img}}]:[]),{text:text||'Що на фото? Оціни КБЖВ і мінерали порцій.'}];
+const a=S.ai||{},skip=a.ns&&Date.now()-a.ns<216e5;if(!skip){try{return await gcall(SYS,parts,SCH,1)}catch(e){if(e.st==0||e.st==401||/API key/i.test(e.message||''))throw e;if([400,403,429].includes(e.st)){S.ai.ns=Date.now();save()}}}return gcall(SYS,parts,SCH,0)}
+const mic=name=>gcall('Ти нутриціолог. Дай типові значення на 100 г продукту за довідковими таблицями складу: клітковина, цукор, насичені жири (г), натрій, кальцій, залізо, калій, магній (мг). Відповідай лише JSON-об’єктом.',[{text:name}],{type:'OBJECT',properties:XP,required:Object.keys(XP)});
+function drawAI(pre){const a=S.ai||{};$('#sh').className='on';$('#sh').innerHTML=`<div class="pn"><div class="gr"></div><div class="top"><button class="x" onclick="sc()">×</button><b>✨ ШІ-помічник</b></div>${a.key?'':'<small>Потрібен безкоштовний ключ Gemini: aistudio.google.com/apikey → Create API key. Вставте його нижче (зберігається лише на цьому телефоні).</small><label style="margin-top:8px">API-ключ<input id="ak" type="password" autocomplete="off"></label>'}<div id="ap"></div><div class="f2"><label class="btn ghost" style="text-align:center">📷 Фото<input id="cm" type="file" accept="image/*" capture="environment" style="display:none" onchange="pickImg(this)"></label><label class="btn ghost" style="text-align:center">🖼 Галерея<input type="file" accept="image/*" style="display:none" onchange="pickImg(this)"></label></div><label>Що це і скільки? Нотатки до фото допомагають (вага, склад, бренд, спосіб приготування)<textarea id="at" rows="4" placeholder="Напр.: пачка чипсів Lay’s Люкс з беконом 100 г. Або: домашній борщ зі сметаною, 350 мл">${esc(pre||'')}</textarea></label><button class="btn ghost" onclick="dictate('#at')">🎤 Продиктувати</button><button class="btn" id="ab" onclick="runAI()">Розрахувати</button><div id="ar" style="margin-top:10px"></div></div>`}
+function runAI(){const k=$('#ak');if(k&&k.value.trim()){S.ai=S.ai||{};S.ai.key=k.value.trim();save()}const t=$('#at').value.trim();if(!t&&!sh.img)return;if(!(S.ai&&S.ai.key)){$('#ar').innerHTML='<small>Спочатку вставте API-ключ</small>';return}doAI(t,sh.img)}
+async function doAI(t,img){$('#sh').className='on';$('#sh').innerHTML='<div class="pn"><div class="gr"></div><div style="padding:30px 0;text-align:center"><div class="spin"></div><br><small>Шукаю в інтернеті та рахую…</small></div></div>';
+try{const a=await gem(t,img),dm=sh.m;sh.ai=a.map(x=>({n:String(x.n||'').slice(0,60),g:R(+x.g||0),k:R(+x.k||0),p:r1(+x.p||0),f:r1(+x.f||0),v:r1(+x.v||0),m:[0,1,2,3].includes(x.m)?x.m:dm,s:String(x.s||'').slice(0,120),x:{fi:r1(+x.fi||0),su:r1(+x.su||0),sf:r1(+x.sf||0),na:R(+x.na||0),ca:R(+x.ca||0),fe:r1(+x.fe||0),po:R(+x.po||0),mg:R(+x.mg||0)}})).filter(x=>x.n).map(fixK);if(!sh.ai.length)throw new Error('ШІ не розпізнав їжу. Опишіть докладніше.');drawAIres()}
+catch(e){sh.img=null;drawAI(t);$('#ar').innerHTML='<small>'+esc(e.st==0?'Немає інтернету.':e.st==429?'Квота Gemini для цього ключа недоступна або вичерпана. Деталі: '+String(e.message||'').slice(0,180):(e.st==400||e.st==401||e.st==403)?'Ключ не підійшов або запит відхилено: '+String(e.message||'').slice(0,180):'Помилка: '+(e.message||e))+'</small>'}}
+function drawAIres(){const l=sh.ai,t=tot(l);$('#sh').innerHTML=`<div class="pn"><div class="gr"></div><div class="top"><button class="x" onclick="sh.img=null;drawAI()">‹</button><b>Перевірте результат</b></div><small>Торкніться іконки, щоб змінити прийом їжі. Після додавання запис можна відредагувати.</small>${l.map((x,i)=>`<div class="row"><span onclick="sh.ai[${i}].m=(sh.ai[${i}].m+1)%4;drawAIres()" style="font-size:22px">${MI[x.m]}</span><div><div>${esc(x.n)}</div><small>${x.g} г · Б ${x.p} Ж ${x.f} В ${x.v}${x.s?' · '+esc(x.s):''}</small></div><span>${x.k}</span><button class="x" onclick="sh.ai.splice(${i},1);drawAIres()">×</button></div>`).join('')||'<small>Порожньо</small>'}<div class="card" style="margin-top:12px"><b>Разом ${R(t.k)} ккал</b><br><small>Б ${r1(t.p)} · Ж ${r1(t.f)} · В ${r1(t.v)} · значення приблизні</small></div><button class="btn" onclick="addAI()">Додати в щоденник</button></div>`}
+function addAI(){if(!sh.ai.length)return;const k=dk(day);(S.log[k]=S.log[k]||[]).push(...sh.ai.map(x=>({...x})));save();buzz();sc();view='t';render()}
+const LN=()=>window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.LocalNotifications;
+const NAT=()=>!!window.Capacitor,standalone=()=>!!(navigator.standalone||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches));
+const webCard=()=>standalone()?`<div class="card"><b>📱 Версія для iPhone</b><br><small>Дані зберігаються лише на цьому телефоні, тому раз на тиждень робіть резервну копію (кнопка нижче). Нагадування, віджет і синхронізація зі здоров’ям у цій версії недоступні.</small></div>`:`<div class="card"><b>📲 Додайте на головний екран</b><br><small>У Safari натисніть «Поділитися» ⬆️ → «На початковий екран». Далі відкривайте додаток лише з іконки, а не з Safari: там окреме сховище даних.</small></div>`;
+const pwaAct=()=>`<div class="card"><b>📱 Кроки, пульс і сон</b><br><small>У версії для iPhone дані зі здоров’я не підтягуються. Вносьте кроки, сон і пульс вручну в блоці «Дані за день» нижче. Калорії тренувань рахуються самі за типом і тривалістю.</small></div>`;
+let remT;
+function remSync(now){clearTimeout(remT);remT=setTimeout(remRun,now?0:1500)}
+async function remRun(){const L=LN();if(!L)return;const r=S.rem||{};
+try{const p=await L.getPending(),ids=(p.notifications||[]).filter(n=>n.id>=100&&n.id<200).map(n=>({id:n.id}));if(ids.length)await L.cancel({notifications:ids});
+if(r.on===false)return;
+let pm=await L.checkPermissions();if(pm.display!=='granted'){if(/^prompt/.test(pm.display))pm=await L.requestPermissions();if(pm.display!=='granted')return}
+const now=new Date(),ns=[],sl=[[r.t1||'15:00',1,'Час записати обід і перекуси 🍲'],[r.t2||'22:00',2,'Не забудьте записати вечерю та підбити підсумок дня 🌙']];
+for(let i=0;i<14;i++){const d=new Date(now);d.setDate(d.getDate()+i);const es=S.log[dk(d)]||[];
+sl.forEach((q,j)=>{const t=q[0].split(':').map(Number),at=new Date(d.getFullYear(),d.getMonth(),d.getDate(),t[0]||0,t[1]||0,0);if(at<=now)return;if(i==0&&es.some(e=>e.m==q[1]))return;ns.push({id:100+i*2+j,title:'КБЖВ',body:q[2],schedule:{at}})})}
+if(ns.length)await L.schedule({notifications:ns})}catch(e){}}
+function srem(k,v){S.rem=S.rem||{};S.rem[k]=v;save();render()}
+async function remTest(){const L=LN();if(!L){toast('Сповіщення працюють лише в додатку');return}
+try{let p=await L.checkPermissions();if(p.display!=='granted')p=await L.requestPermissions();if(p.display!=='granted'){toast('Дозвольте сповіщення в налаштуваннях телефону');return}
+await L.schedule({notifications:[{id:9,title:'КБЖВ',body:'Тестове нагадування: час записати їжу 🍽',schedule:{at:new Date(Date.now()+3000)}}]});toast('Сповіщення прийде за кілька секунд')}catch(e){toast('Помилка: '+(e.message||e))}}
+const remCard=()=>{if(!NAT())return webCard();const r=S.rem||{};return `<div class="card"><b>🔔 Нагадування про їжу</b><br><small>Приходять, лише якщо ви ще не записали обід чи вечерю. Плануються на 2 тижні наперед, тому іноді відкривайте додаток.</small><br><br><label style="display:flex;align-items:center;gap:10px"><input type="checkbox" style="width:auto;margin:0" ${r.on===false?'':'checked'} onchange="srem('on',this.checked)"> Увімкнути</label><div class="f2"><label>Обід<input type="time" value="${r.t1||'15:00'}" onchange="srem('t1',this.value)"></label><label>Вечеря<input type="time" value="${r.t2||'22:00'}" onchange="srem('t2',this.value)"></label></div><button class="btn ghost" onclick="remTest()">Надіслати тестове</button></div>`};
+const aiCard=()=>{const a=S.ai||{};return `<div class="card"><b>ШІ-помічник (Gemini)</b><br><small>Безкоштовний ключ: aistudio.google.com/apikey. Зберігається лише на цьому телефоні й не потрапляє в резервну копію.</small><br><small>Запитів до Gemini: сьогодні <b>${(a.cn||{})[dk(new Date())]||0}</b> · за 7 днів <b>${Object.keys(a.cn||{}).filter(k=>k>=dk(new Date(Date.now()-6*864e5))).reduce((q,k)=>q+a.cn[k],0)}</b> (лічильник цього додатка, ліміт Google дивіться в aistudio.google.com/rate-limit)</small><br><br><label>API-ключ<input type="password" autocomplete="off" value="${esc(a.key||'')}" onchange="sai('key',this.value.trim())"></label><label>Модель<input value="${esc(a.model&&!/^gemini-(2\.5|3\.5-flash$)/i.test(a.model)?a.model:'gemini-3.8-flash')}" onchange="sai('model',this.value.trim())"></label></div>`};
+function sai(k,v){S.ai=S.ai||{};S.ai[k]=v;save()}
+function openAI(cam,t){sh={m:cm()};if(t&&S.ai&&S.ai.key)return doAI(t,null);drawAI(t||'');if(cam){const i=$('#cm');i&&i.click()}}
+const VB=()=>window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.VoiceBridge;
+async function dictate(sel,send){const V=VB();if(!V){toast('Натисніть мікрофон на клавіатурі телефону');return}
+try{const r=await V.listen({lang:'uk-UA',prompt:'Що ви з’їли? Назвіть страву й кількість'}),t=((r&&r.text)||'').trim();if(!t)return;const e=$(sel);if(!e)return;e.value=(e.value.trim()?e.value.trim()+' ':'')+t;if(send)sendAI()}
+catch(e){toast('Голосовий ввід недоступний на цьому телефоні. Скористайтесь мікрофоном на клавіатурі')}}
+function sendAI(){const t=$('#aq').value.trim();if(!t)return;$('#aq').value='';openAI(0,t)}
+function pickImg(inp){const f=inp.files[0];if(!f)return;const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const q=Math.min(1,1024/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*q);c.height=Math.round(im.height*q);c.getContext('2d').drawImage(im,0,0,c.width,c.height);const d=c.toDataURL('image/jpeg',.82);sh.img=d.split(',')[1];$('#ap').innerHTML=`<img src="${d}" style="width:100%;max-height:200px;object-fit:cover;border-radius:16px;margin-bottom:8px"><button class="btn ghost" style="margin:0 0 12px" onclick="sh.img=null;$('#ap').innerHTML=''">Прибрати фото</button>`;URL.revokeObjectURL(u)};im.onerror=()=>alert('Не вдалось відкрити фото');im.src=u;inp.value=''}
+const cm=()=>{const h=new Date().getHours();return h<11?0:h<16?1:h<21?2:3};
+let ex={},ap='d',busy=null,tried={};ex[cm()]=1;
+const WD2=['ПН','ВТ','СР','ЧТ','ПТ','СБ','НД'],WT=['Ходьба','Біг','Велосипед','Силове','Плавання','Йога','Інше'];
+function sd(k){const a=k.split('-');day=new Date(+a[0],a[1]-1,+a[2]);render()}
+function tgm(m){ex[m]=!ex[m];render();const e=document.querySelector('[data-mb="'+m+'"]');e&&e.classList.add('pop')}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(window._t);window._t=setTimeout(()=>e.classList.remove('on'),2800)}
+function openCustom(m){sh={m};drawCustom()}
+function actK(h){if(!h)return 0;return h.act!=null&&h.act!==''?+h.act:R((+h.steps||0)*.04+(h.wo||[]).reduce((a,w)=>a+(+w.k||0),0))}
+const woK=h=>h?(h.wo||[]).reduce((a,w)=>a+(+w.k||0),0):0;
+function G(d){const g=S.goal,h=S.hc[dk(d)],b=S.adapt===false?0:R(woK(h));
+if(b<=0)return{...g,base:g.k,ad:0};
+return{...g,base:g.k,k:g.k+b,v:g.v+R(b/4),ad:b}}
+function editE(i){const e=S.log[dk(day)][i];sh={ei:i,b:{...e,x:{...(e.x||{})}},e:{...e,x:{...(e.x||{})}}};drawE()}
+function drawE(){const e=sh.e,I=(l,id,v,ev)=>`<label>${l}<input id="${id}" type="number" inputmode="decimal" value="${v==null?'':v}" onchange="${ev}"></label>`;
+$('#sh').className='on';$('#sh').innerHTML=`<div class="pn"><div class="gr"></div><div class="top"><button class="x" onclick="sc()">×</button><b>Редагувати запис</b></div>
+<label>Назва<input id="en" value="${esc(e.n)}" oninput="sh.e.n=this.value"></label>
+<label>Вага, г (решта значень перерахується пропорційно)<input id="eg" type="number" inputmode="decimal" value="${e.g}" oninput="eg(this.value)"></label>
+<div class="chips">${[-50,-25,25,50,100].map(n=>`<span onclick="ebump(${n})">${n>0?'+':''}${n} г</span>`).join('')}</div>
+<div class="f2">${I('Ккал','ek',e.k,"emv('k',this.value)")}${I('Білки, г','ep',e.p,"emv('p',this.value)")}${I('Жири, г','ef',e.f,"emv('f',this.value)")}${I('Вуглеводи, г','ev',e.v,"emv('v',this.value)")}</div>
+<div class="chips">${MN.map((n,m)=>`<span class="${m==e.m?'on':''}" onclick="sh.e.m=${m};drawE()">${MI[m]} ${n}</span>`).join('')}</div>
+<details><summary style="color:var(--m);margin-bottom:10px">Клітковина й мінерали</summary><div class="f2">${MD.map(d=>I(d[1]+', '+d[2],'ex'+d[0],e.x[d[0]],`emx('${d[0]}',this.value)`)).join('')}</div></details>
+<button class="btn ghost" style="width:auto;padding:7px 14px;font-size:13px;margin:0 0 10px" onclick="openMore()">🔬 Більше ›</button>${e.s?`<small>Джерело: ${esc(e.s)}</small>`:''}<button class="btn" onclick="saveE()">Зберегти</button><button class="btn ghost" style="margin-top:8px" onclick="delE(this)">Видалити запис</button></div>`}
+function eg(v){const g=+v||0,e=sh.e,b=sh.b,f=b.g?g/b.g:1;e.g=g;e.k=R(b.k*f);['p','f','v'].forEach(k=>e[k]=r1(b[k]*f));e.x={};for(const k in b.x)e.x[k]=r1(b.x[k]*f);setE()}
+function setE(){['k','p','f','v'].forEach(k=>$('#e'+k).value=sh.e[k]);MD.forEach(d=>{const el=$('#ex'+d[0]);if(el)el.value=sh.e.x[d[0]]==null?'':sh.e.x[d[0]]})}
+function ebump(n){const g=Math.max(1,(+sh.e.g||0)+n);$('#eg').value=g;eg(g)}
+const rb2=()=>{sh.b={...sh.e,x:{...sh.e.x}}};
+function emv(k,v){sh.e[k]=+v||0;rb2()}
+function emx(k,v){if(v==='')delete sh.e.x[k];else sh.e.x[k]=+v;rb2()}
+function saveE(){const e={...sh.e};if(!Object.keys(e.x||{}).length)delete e.x;S.log[dk(day)][sh.ei]=e;save();buzz();sc();render()}
+function delE(b){if(!sh.dc){sh.dc=1;b.textContent='Натисніть ще раз для видалення';return}S.log[dk(day)].splice(sh.ei,1);save();sc();render()}
+const MX=[['fi','Клітковина','г',1],['su','Цукор','г',1],['sf','Насичені жири','г',1],['chol','Холестерин','мг',0],['na','Натрій','мг',0],['po','Калій','мг',0],['ca','Кальцій','мг',0],['mg','Магній','мг',0],['ph','Фосфор','мг',0],['fe','Залізо','мг',1],['zn','Цинк','мг',1],['cu','Мідь','мг',2],['mn','Марганець','мг',2],['se','Селен','мкг',1],['va','Вітамін A','мкг',0],['vc','Вітамін C','мг',1],['vd','Вітамін D','мкг',1],['ve','Вітамін E','мг',1],['vk','Вітамін K','мкг',1],['b1','Вітамін B1','мг',2],['b2','Вітамін B2','мг',2],['b3','Вітамін B3 (PP)','мг',1],['b6','Вітамін B6','мг',2],['b9','Фолат (B9)','мкг',0],['b12','Вітамін B12','мкг',2]];
+const SCI={type:'ARRAY',items:{type:'OBJECT',properties:{n:{type:'STRING'},g:NUM,...Object.fromEntries(MX.map(m=>[m[0],NUM]))},required:['n','g',...MX.map(m=>m[0])]}};
+const SYB='Ти нутриціолог у додатку обліку харчування. Користувач надає назву страви чи продукту, вагу порції та, можливо, відомі КБЖВ. Розбий порцію на типові інгредієнти (для складної страви: основні компоненти, олія, соус, гарнір; для простого продукту: один інгредієнт). Для кожного інгредієнта вкажи n (коротка українська назва), g (вага в грамах; сума ваг усіх інгредієнтів має дорівнювати вазі порції) і вміст мікроелементів саме в цій вазі за довідковими таблицями складу (USDA, Скурихін). Одиниці: fi, su, sf у грамах; chol, na, po, ca, mg, ph, fe, zn, cu, mn, b1, b2, b3, b6, vc, ve у міліграмах; se, va (мкг RAE), vd, vk, b9, b12 у мікрограмах. Якщо інгредієнт не містить речовини, став 0. Не вигадуй інгредієнти, яких немає в описі страви; для типових страв бери типовий рецепт. Відповідай ЛИШЕ JSON-масивом.';
+const r2=x=>Math.round(x*100)/100,fmx=(v,d)=>String(Number((+v).toFixed(d)));
+const gmsg=e=>e.st==0?'Немає інтернету.':e.st==429?'Квота Gemini для цього ключа недоступна або вичерпана. '+String(e.message||'').slice(0,160):(e.st==400||e.st==401||e.st==403)?'Ключ не підійшов або запит відхилено: '+String(e.message||'').slice(0,160):'Помилка: '+(e.message||e);
+async function loadBd(e){const ctx='Страва: '+e.n+'. Вага порції: '+e.g+' г. Відомо: '+e.k+' ккал, Б '+e.p+', Ж '+e.f+', В '+e.v+(e.s?'. Джерело даних: '+e.s:'')+'.';
+const a=await gcall(SYB,[{text:ctx}],SCI,0),it=(Array.isArray(a)?a:[]).map(x=>{const v={};MX.forEach(m=>v[m[0]]=r2(Math.max(0,+x[m[0]]||0)));return{n:String(x.n||'').slice(0,60),g:r2(Math.max(0,+x.g||0)),v}}).filter(x=>x.n);
+const g0=it.reduce((q,x)=>q+x.g,0);if(!it.length||g0<=0)throw new Error('ШІ не розбив страву на інгредієнти. Спробуйте ще раз.');return{g0,it,t:Date.now()}}
+async function openMore(retry){const my=sh,e=sh.e;if(retry){e.bd=null;const L=S.log[dk(day)][my.ei];if(L)delete L.bd}
+if(e.bd){drawMore();return}
+if(!(S.ai&&S.ai.key)){drawMore('Потрібен ключ Gemini: відкрийте ✨ ШІ-помічник або налаштування й вставте ключ.');return}
+$('#sh').innerHTML='<div class="pn"><div class="gr"></div><div style="padding:30px 0;text-align:center"><div class="spin"></div><br><small>Розписую інгредієнти й мікроелементи…</small></div></div>';
+try{const bd=await loadBd(e);if(sh!==my)return;e.bd=bd;const L=S.log[dk(day)][my.ei];if(L){L.bd=bd;save()}drawMore()}
+catch(er){if(sh!==my)return;drawMore(gmsg(er))}}
+function drawMore(msg){const e=sh.e,bd=e.bd,hd='<div class="pn"><div class="gr"></div><div class="top"><button class="x" onclick="drawE()">‹</button><b>'+esc(e.n)+'</b></div>';
+if(!bd){$('#sh').innerHTML=hd+'<small>'+esc(msg||'Немає даних')+'</small><button class="btn" onclick="openMore(1)">Спробувати ще</button></div>';return}
+const f=(+e.g||0)/bd.g0,t=sh.bt||'i',it=bd.it.map(x=>({n:x.n,g:x.g*f,v:Object.fromEntries(MX.map(m=>[m[0],x.v[m[0]]*f]))}));
+const tab='<div class="chips"><span class="'+(t=='i'?'on':'')+'" onclick="sh.bt=\'i\';drawMore()">За інгредієнтами</span><span class="'+(t=='m'?'on':'')+'" onclick="sh.bt=\'m\';drawMore()">За мікроелементами</span></div>';
+let body='';
+if(t=='i'){body=it.map(x=>{const l=MX.filter(m=>+fmx(x.v[m[0]],m[3])>0).map(m=>m[1]+' '+fmx(x.v[m[0]],m[3])+' '+m[2]);return '<div class="row"><div><div><b>'+esc(x.n)+'</b> <i>'+R(x.g)+' г</i></div><small>'+(l.join(' · ')||'мікроелементів майже немає')+'</small></div></div>'}).join('')}
+else{body=MX.map(m=>{const tt=it.reduce((q,x)=>q+x.v[m[0]],0);if(!(+fmx(tt,m[3])>0))return'';const c=it.filter(x=>+fmx(x.v[m[0]],m[3])>0).sort((p,q)=>q.v[m[0]]-p.v[m[0]]).map(x=>esc(x.n)+' '+fmx(x.v[m[0]],m[3]));return '<div class="row"><div><div><b>'+m[1]+'</b> <i>'+fmx(tt,m[3])+' '+m[2]+'</i></div><small>'+c.join(' · ')+'</small></div></div>'}).join('')}
+$('#sh').innerHTML=hd+'<small>Склад порції '+R(e.g)+' г. Значення орієнтовні: ШІ розрахував їх за довідковими таблицями складу.</small>'+tab+body+'<button class="btn ghost" style="margin-top:12px" onclick="openMore(1)">Перерахувати</button></div>'}
+const hd=()=>S.hc[dk(day)]||(S.hc[dk(day)]={});
+function sh2(k,v){hd()[k]=v===''?undefined:+v;save();render()}
+const MET={'Ходьба':3.5,'Біг':9.8,'Велосипед':7.5,'Силове':5,'Плавання':7,'Йога':2.5,'Інше':5};
+function metOf(t){t=String(t||'');if(MET[t]!=null)return MET[t];
+if(/run|jog|біг|біж/i.test(t))return 9.8;if(/walk|hik|ходьб|прогул/i.test(t))return 3.5;if(/cycl|bik|велос/i.test(t))return 7.5;if(/swim|плав/i.test(t))return 7;
+if(/yoga|pilat|stretch|йог|пілат|розтяж/i.test(t))return 2.5;if(/hiit|box|футбол|soccer|basket|tennis|danc|танц|бокс/i.test(t))return 7.5;return 5}
+const estK=(t,m)=>R(Math.max(0,metOf(t)-1)*(+S.prof.w||70)*(+m||0)/60);
+function westim(){const k=$('#wkk');if(!k)return;const m=+$('#wm').value;k.placeholder=m?'≈ '+estK($('#wt').value,m):'авто'}
+function addWo(){const m=+$('#wm').value||0;if(!m)return;const h=hd();const t=$('#wt').value,kv=$('#wkk').value.trim(),au=kv==='',k=au?estK(t,m):(+kv||0);(h.wo=h.wo||[]).push({t,m,k,au:au?1:undefined});save();buzz();render();toast('Тренування додано: +'+k+' ккал до норми'+(au?' (оцінка)':''))}
+function delWo(i){hd().wo.splice(i,1);save();render()}
+function sadapt(v){S.adapt=v;save();render()}
+let AS={p:'w',o:0};
+function asp(p){AS={p,o:0};render()}
+function aso(n){AS.o=Math.max(0,AS.o+n);render()}
+function aper(){const t=new Date();t.setHours(0,0,0,0);let a,b;
+if(AS.p=='w'){a=new Date(t);a.setDate(a.getDate()-(a.getDay()+6)%7-7*AS.o);b=new Date(a);b.setDate(a.getDate()+6)}
+else{a=new Date(t.getFullYear(),t.getMonth()-AS.o,1);b=new Date(t.getFullYear(),t.getMonth()-AS.o+1,0)}
+const ds=[];for(let d=new Date(a);d<=b;d.setDate(d.getDate()+1))ds.push(new Date(d));return{a,b,ds}}
+function wkStrip(){const mon=new Date(day);mon.setDate(mon.getDate()-(mon.getDay()+6)%7);return `<div class="wk" data-sw="day"><button onclick="mv(-7)">‹</button>${[...Array(7)].map((_,i)=>{const d=new Date(mon);d.setDate(mon.getDate()+i);return `<button class="wd${dk(d)==dk(day)?' on':''}" onclick="sd('${dk(d)}')"><small>${WD2[i]}</small><b>${d.getDate()}</b></button>`}).join('')}<button onclick="mv(7)">›</button></div>`}
+function actStat(sg){const P=aper(),td=dk(new Date()),L=P.ds.map(d=>({d,h:S.hc[dk(d)]||{}})),pst=L.filter(o=>dk(o.d)<=td),
+nz=f=>pst.map(o=>+f(o.h)||0).filter(x=>x>0),sum=a=>a.reduce((x,y)=>x+y,0),avg=a=>a.length?sum(a)/a.length:0,
+ws=pst.reduce((a,o)=>a.concat(o.h.wo||[]),[]),wr=ws.filter(w=>w.hra).map(w=>w.hra),
+bars=L.map((o,i)=>({l:AS.p=='w'?WD2[i]:(i%5==0?o.d.getDate():''),v:+o.h.steps||0})),mx=Math.max(sg,...bars.map(b=>b.v),1),
+C=(l,v,u)=>`<div class="mc"><small>${l}</small><b>${v?v:'—'}<i> ${u}</i></b></div>`,
+lb=AS.p=='w'?`${P.a.getDate()} ${MO[P.a.getMonth()]} – ${P.b.getDate()} ${MO[P.b.getMonth()]}`:`${MO[P.a.getMonth()]} ${P.a.getFullYear()}`,
+tb=[['w','Тиждень'],['m','Місяць']].map(x=>`<button class="${AS.p==x[0]?'on':''}" onclick="asp('${x[0]}')">${x[1]}</button>`).join('');
+return `<div class="card" data-sw="act" style="margin-top:12px"><b>Статистика активності</b><div class="seg" style="margin:10px 0;background:var(--bg)">${tb}</div>
+<div class="hd" style="margin-bottom:4px"><button onclick="aso(1)" style="background:var(--c2)">‹</button><b>${lb}</b><button onclick="aso(-1)" style="background:var(--c2)">›</button></div>
+<small>Кроки по днях · пунктир — ціль</small><div class="plot"><i class="gl" style="bottom:${sg/mx*100}%"></i><div class="chart">${bars.map(b=>`<div class="col"><u data-h="${b.v/mx*100}"></u><small>${b.l}</small></div>`).join('')}</div></div>
+<div class="grid">${C('Середньо кроків',R(avg(nz(h=>h.steps))),'')}${C('Дистанція',r1(sum(nz(h=>h.dist))),'км')}${C('Активні ккал/день',R(avg(nz(h=>actK(h)))),'ккал')}${C('Сон/день',r1(avg(nz(h=>h.sleep))),'год')}${C('Пульс спокою',R(avg(nz(h=>h.hr))),'уд/хв')}${C('Макс. пульс',Math.max(0,...nz(h=>h.hrMx)),'уд/хв')}${C('Тренувань',ws.length,'')}${C('Час тренувань',R(sum(ws.map(w=>+w.m||0))),'хв')}${C('Спалено на тренуваннях',R(sum(ws.map(w=>+w.k||0))),'ккал')}${C('Пульс на тренуваннях',R(avg(wr)),'уд/хв')}</div></div>`}
+function activity(){const h=S.hc[dk(day)]||{},st=+h.steps||0,sg=S.sg||10000,wo=h.wo||[],ak=actK(h),
+hist=rng(7).map(o=>({l:WD[o.d.getDay()],v:+((S.hc[dk(o.d)]||{}).steps)||0})),mx=Math.max(sg,...hist.map(x=>x.v)),
+C=(l,v,u)=>`<div class="mc"><small>${l}</small><b>${v==null||v===''?'—':v}<i> ${u}</i></b></div>`,
+F=(l,k,v)=>`<label>${l}<input type="number" inputmode="decimal" value="${v==null?'':v}" onchange="sh2('${k}',this.value)"></label>`,
+hz=h.hz&&h.hz.some(x=>x>0)?`<div class="card"><b>Пульсові зони</b><small> (за день, хв; % від макс. пульсу ≈ ${220-(+S.prof.age||30)})</small>${['нижче 60%','60–70%','70–80%','80–90%','від 90%'].map((n,i)=>`<div class="sr2" style="margin-top:10px"><small>${n}</small><b>${R(h.hz[i])} хв</b></div><div class="bar"><u style="background:var(--r)" data-w="${Math.min(100,h.hz[i]/Math.max(...h.hz)*100)}"></u></div>`).join('')}</div>`:'';
+return `<div class="hd" data-sw="day"><button onclick="mv(-1)">‹</button><b>${lab(day)}</b><button onclick="mv(1)">›</button></div>${wkStrip()}
+${syncCard()}<div class="card"><div class="sr2"><small>КРОКИ</small><small>ціль ${sg}</small></div><b class="big" data-n="${st}">0</b>
+<div class="bar" style="margin:8px 0 10px"><u style="background:linear-gradient(90deg,var(--v),var(--p))" data-w="${Math.min(100,st/sg*100)}"></u></div>
+<div class="plot" style="height:64px;margin:6px 0 24px"><div class="chart">${hist.map(x=>`<div class="col"><u data-h="${x.v/mx*100}"></u><small>${x.l}</small></div>`).join('')}</div></div></div>
+<div class="grid">${C('Дистанція',h.dist,'км')}${C('Активні ккал',ak||'','ккал')}${C('Пульс спокою',h.hr,'уд/хв')}${C('Сон',h.sleep,'год')}${C('Середній пульс',h.hrA,'уд/хв')}${C('Макс. пульс',h.hrMx,'уд/хв')}</div>${hz}
+<div class="card" style="margin-top:12px"><b>Тренування</b>${wo.map((w,i)=>`<div class="row"><div><div>${w.sy?'⌚ ':''}${esc(w.t)}</div><small>${w.m} хв · ${w.au?'≈ ':''}${w.k} ккал${w.hra?` · ♥ сер. ${w.hra} / макс. ${w.hrm}`:''}</small></div><button class="x" onclick="delWo(${i})">×</button></div>`).join('')||'<br><small>Поки немає</small>'}
+<div class="f2" style="margin-top:12px"><label>Тип<select id="wt" onchange="westim()">${WT.map(t=>`<option>${t}</option>`).join('')}</select></label><label>Хвилин<input id="wm" type="number" inputmode="decimal" oninput="westim()"></label><label>Ккал (необов’язково, інакше порахується само)<input id="wkk" type="number" inputmode="decimal" placeholder="авто"></label></div><button class="btn ghost" onclick="addWo()">+ Додати тренування</button></div>
+${actStat(sg)}
+<div class="card"><b>Дані за день</b><small> (вручну, якщо треба виправити)</small><br><br><div class="f2">${F('Кроки','steps',h.steps)}${F('Дистанція, км','dist',h.dist)}${F('Пульс спокою','hr',h.hr)}${F('Сон, год','sleep',h.sleep)}${F('Активні ккал (авто)','act',h.act)}</div>
+<label>Ціль кроків<input type="number" value="${sg}" onchange="S.sg=+this.value||10000;save();render()"></label>
+<label style="display:flex;align-items:center;gap:10px"><input type="checkbox" style="width:auto;margin:0" ${S.adapt===false?'':'checked'} onchange="sadapt(this.checked)"> Додавати калорії за тренування до норми</label></div>
+`}
+const rk=k=>{const t=new Date();if(k=='d')return 'd-'+dk(t);if(k=='w'){const m=new Date(t);m.setDate(t.getDate()-(t.getDay()+6)%7);return 'w-'+dk(m)}return 'm-'+t.getFullYear()+'-'+(t.getMonth()+1)};
+function pdata(k){const n=k=='d'?1:k=='w'?7:30,g=S.goal;return{профіль:{стать:S.prof.sex=='m'?'чоловік':'жінка',вік:S.prof.age,зріст:S.prof.h,вага:S.prof.w,відсоток_жиру:S.prof.bf||null,ціль_зміна_калорій:S.prof.aim},норма:{ккал:g.k,білки:g.p,жири:g.f,вуглеводи:g.v,вода_мл:g.w,кроки:S.sg||10000,мікро:g.m},
+дні:rng(n).map(o=>{const d=dk(o.d),h=S.hc[d]||{},x={};MD.forEach(m=>x[m[0]]=r1(o.es.reduce((a,e)=>a+((e.x&&e.x[m[0]])||0),0)));return{дата:d,ккал:R(o.t.k),б:R(o.t.p),ж:R(o.t.f),в:R(o.t.v),мікро:x,вода_мл:wtot(o.d),страви:o.es.map(e=>e.n).slice(0,12),кроки:h.steps,активні_ккал:actK(h)||undefined,пульс_спокою:h.hr,пульс_середній:h.hrA,пульс_макс:h.hrMx,пульс_мін:h.hrMn,пульсові_зони_хв:h.hz?{'до 60% макс.':h.hz[0],'60-70%':h.hz[1],'70-80%':h.hz[2],'80-90%':h.hz[3],'від 90%':h.hz[4]}:undefined,сон_год:h.sleep,норма_з_бонусом_ккал:G(o.d).k,бонус_за_тренування_ккал:G(o.d).ad||undefined,тренування:(h.wo||[]).map(w=>({тип:w.t,хв:w.m,ккал:w.k,пульс_сер:w.hra,пульс_макс:w.hrm,пульс_мін:w.hrn}))}}).filter(x=>x.ккал||x.вода_мл||x.кроки)}}
+const SYR='Ти нутриціолог і фітнес-тренер у додатку. На вході профіль, норми та дані за період (їжа, КБЖВ, клітковина й мінерали, вода, кроки, пульс (спокою, середній, максимальний, час у пульсових зонах, пульс під час тренувань), сон, тренування). Дай оцінку періоду від 1 до 10, короткий підсумок (2-4 речення), що вийшло добре, що поправити, конкретні поради щодо харчування (приклади продуктів, доступних в Україні) та щодо тренувань, активності й сну. Враховуй мікроелементи, воду й баланс макро. Не став діагнозів і не призначай ліків, при тривожних відхиленнях порадь звернутись до лікаря. Пиши українською, дружньо й конкретно, спирайся на числа з даних. Якщо даних мало, скажи про це.';
+const SA={type:'ARRAY',items:{type:'STRING'}},SR={type:'OBJECT',properties:{score:{type:'INTEGER'},summary:{type:'STRING'},good:SA,improve:SA,food:SA,training:SA},required:['score','summary','good','improve','food','training']};
+async function genRep(k){if(!(S.ai&&S.ai.key)){toast('Додайте ключ Gemini у Профілі');return}busy=k;S.err='';render();
+try{const r=await gcall(SYR,[{text:JSON.stringify(pdata(k))}],SR);S.rep[rk(k)]={t:Date.now(),r};save()}catch(e){S.err=e.st==429?'Перевищено ліміт запитів Gemini, спробуйте за хвилину':(e.message||String(e))}busy=null;render()}
+function autoRep(){if(busy||!(S.ai&&S.ai.key))return;const t=new Date(),last=new Date(t.getFullYear(),t.getMonth()+1,0).getDate()==t.getDate();let k=null;
+if(t.getHours()>=20){if(last&&!S.rep[rk('m')])k='m';else if(t.getDay()==0&&!S.rep[rk('w')])k='w';else if(!S.rep[rk('d')])k='d'}
+if(k&&!tried[k]){tried[k]=1;ap=k;genRep(k)}}
+function advice(){const c=S.rep[rk(ap)],T={d:'День',w:'Тиждень',m:'Місяць'},sec=(t,a)=>a&&a.length?`<h4>${t}</h4><ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'';
+const tabs=Object.keys(T).map(x=>`<button class="${ap==x?'on':''}" onclick="ap='${x}';render()">${T[x]}</button>`).join('');
+const body=busy==ap?'<div class="card" style="text-align:center"><div class="spin"></div><br><small>Gemini аналізує дані…</small></div>':c?`<div class="card"><div class="sr2"><b>Підсумок</b><span class="sc">${c.r.score}/10</span></div><p>${esc(c.r.summary)}</p>${sec('✅ Добре',c.r.good)}${sec('🔧 Що поправити',c.r.improve)}${sec('🍽 Харчування',c.r.food)}${sec('🏃 Тренування й активність',c.r.training)}<small>Створено ${new Date(c.t).toLocaleString('uk-UA')}</small></div>`:'<div class="card" data-sw="ap"><small>Звіту за цей період ще немає. Натисніть кнопку нижче.</small></div>';
+return `<h2>Поради</h2><div class="seg" data-sw="ap">${tabs}</div>${body}${S.err?`<small>${esc(S.err)}</small>`:''}<button class="btn" onclick="genRep('${ap}')">${c?'Оновити звіт':'Створити звіт'}</button><br><br><small>Звіт за день створюється автоматично після 20:00, за тиждень у неділю ввечері, за місяць в останній день місяця. Це відбувається, коли ви відкриваєте цю вкладку. Дані за період надсилаються до Gemini. Це не медична порада.</small>`}
+const HL=()=>window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.Health;
+const dsrc=x=>x.sourceName||x.sourceId||x.source||x.platformId||'?',dS=x=>dk(new Date(x.startDate)),dE=x=>dk(new Date(x.endDate||x.startDate));
+const grp=(a,key)=>{const m={};a.forEach(x=>{const d=key(x),g=dsrc(x);m[d]=m[d]||{};m[d][g]=(m[d][g]||0)+(+x.value||0)});const o={};for(const d in m)o[d]=Math.max(...Object.values(m[d]));return o};
+const PREF=/nothing|cmf/i;
+function dedup(a){const b=a.map(x=>({x,s:+new Date(x.startDate),e:+new Date(x.endDate||x.startDate),v:+x.value||0})).filter(r=>!isNaN(r.s)).sort((p,q)=>p.s-q.s||p.e-q.e),o=[];
+for(const r of b){const l=o[o.length-1];
+if(!(r.e>r.s)){o.push({x:r.x,v:r.v,s:r.s,e:r.e});continue}
+if(l&&l.e>l.s){const ov=Math.min(r.e,l.e)-Math.max(r.s,l.s);
+if(ov>0){const sm=Math.min(r.e-r.s,l.e-l.s);
+if(ov/sm>=.5){if(r.v>l.v){l.v=r.v;l.x=r.x}l.s=Math.min(l.s,r.s);l.e=Math.max(l.e,r.e);continue}
+const f=(r.e-Math.max(r.s,l.e))/(r.e-r.s);if(f<=0)continue;o.push({x:r.x,v:r.v*f,s:Math.max(r.s,l.e),e:r.e});continue}}
+o.push({x:r.x,v:r.v,s:r.s,e:r.e})}return o}
+function hcPick(a){const by={},per={},tt={};a.forEach(x=>{(by[dsrc(x)]=by[dsrc(x)]||[]).push(x)});
+for(const g in by){const m={};dedup(by[g]).forEach(r=>{const d=dS(r.x);m[d]=(m[d]||0)+r.v});per[g]=m;tt[g]=Object.values(m).reduce((p,q)=>p+q,0)}
+const nm=Object.keys(by);let ch=S.hcSrc&&nm.includes(S.hcSrc)?S.hcSrc:nm.find(g=>PREF.test(g));if(!ch&&nm.length)ch=nm.sort((p,q)=>tt[q]-tt[p])[0];
+return{v:per[ch]||{},by:per,src:ch,recs:ch?dedup(by[ch]):[]}}
+let hcRun=0,hcLast=0,hcHT=0;
+async function hcChunk(H,from,to,n,er,top){const fk=dk(from),tk=dk(new Date(to-1)),inW=d=>d>=fk&&d<=tk,ep=m=>{if(!er.includes(m))er.push(m)};
+const rdD=async t=>{const all=[];try{const d0=new Date(from);while(d0<to){const e=new Date(d0);e.setDate(e.getDate()+1);const r=await H.readSamples({dataType:t,startDate:d0.toISOString(),endDate:(e>to?to:e).toISOString(),limit:5000});all.push(...(r.samples||[]));d0.setDate(d0.getDate()+1)}n[t]=(n[t]||0)+all.length}catch(e){ep(t+': '+(e.message||e))}return all};
+const rd=async t=>{try{const r=await H.readSamples({dataType:t,startDate:from.toISOString(),endDate:to.toISOString(),limit:5000});n[t]=(n[t]||0)+(r.samples||[]).length;return r.samples||[]}catch(e){ep(t+': '+(e.message||e));return[]}};
+const st=await rdD('steps'),di=await rdD('distance'),ca=await rdD('calories'),hr=await rdD('heartRate'),rh=await rd('restingHeartRate'),sl=await rd('sleep'),wt=top?await rd('weight'):[];
+let wk=[];try{const r=await H.queryWorkouts({startDate:from.toISOString(),endDate:to.toISOString(),limit:200});wk=r.workouts||[];n.workouts=(n.workouts||0)+wk.length}catch(e){ep('workouts: '+(e.message||e))}
+const dm=di.length&&/kilo|km/i.test(di[0].unit||'')?1:1000,mins=x=>+x.value||((new Date(x.endDate)-new Date(x.startDate))/60000)||0;
+const P1=hcPick(st),P2=hcPick(di),P3=hcPick(ca),steps=P1.v,dist=P2.v,cal=P3.v,sleep=grp(sl.filter(x=>!/awake|inbed|out/i.test(x.sleepState||'')).map(x=>({...x,value:mins(x)})),dE),rhr={};
+const wkc=w=>{const a=+new Date(w.startDate),b=+new Date(w.endDate);if(!(b>a))return 0;let t=0;P3.recs.forEach(r=>{if(!(r.e>r.s))return;const o=Math.min(b,r.e)-Math.max(a,r.s);if(o>0)t+=r.v*o/(r.e-r.s)});return t};
+rh.sort((a,b)=>new Date(a.startDate)-new Date(b.startDate)).forEach(x=>rhr[dS(x)]=+x.value);
+const hs=hr.map(x=>({t:+new Date(x.startDate),v:+x.value})).filter(x=>x.v>=30&&x.v<=230&&!isNaN(x.t)).sort((p,q)=>p.t-q.t),hday={},mhr=220-(+S.prof.age||30);
+hs.forEach((x,i)=>{const d=dk(new Date(x.t)),o=hday[d]=hday[d]||{s:0,c:0,mn:999,mx:0,z:[0,0,0,0,0]},nx=hs[i+1],dt=nx?Math.min((nx.t-x.t)/60000,5):1,pc=x.v/mhr;o.s+=x.v;o.c++;o.mn=Math.min(o.mn,x.v);o.mx=Math.max(o.mx,x.v);o.z[pc<.6?0:pc<.7?1:pc<.8?2:pc<.9?3:4]+=dt});
+const wh=w=>{const a=+new Date(w.startDate),b=+new Date(w.endDate),v=hs.filter(x=>x.t>=a&&x.t<=b).map(x=>x.v);return v.length?{hra:R(v.reduce((p,q)=>p+q)/v.length),hrm:Math.max(...v),hrn:Math.min(...v)}:{}};
+const hv={};hr.forEach(x=>(hv[dS(x)]=hv[dS(x)]||[]).push(+x.value||0));for(const d in hv)if(rhr[d]==null){const a=hv[d].filter(Boolean).sort((p,q)=>p-q);if(a.length)rhr[d]=a[Math.floor(a.length*.1)]}
+const ds=[...new Set([...Object.keys(steps),...Object.keys(dist),...Object.keys(cal),...Object.keys(sleep),...Object.keys(rhr),...Object.keys(hday),...wk.map(dS)])].filter(inW);
+ds.forEach(d=>{const h=S.hc[d]=S.hc[d]||{};if(steps[d]!=null)h.steps=R(steps[d]);if(dist[d]!=null)h.dist=r1(dist[d]/dm);if(cal[d]!=null)h.act=R(cal[d]);if(sleep[d]!=null)h.sleep=r1(sleep[d]/60);if(rhr[d]!=null)h.hr=R(rhr[d]);const hy=hday[d];if(hy&&hy.c){h.hrA=R(hy.s/hy.c);h.hrMn=hy.mn;h.hrMx=hy.mx;h.hz=hy.z.map(R)}
+h.wo=(h.wo||[]).filter(w=>!w.sy).concat(wk.filter(w=>dS(w)==d).map(w=>{const ak=wkc(w),hk=+w.totalEnergyBurned||+w.calories||0,t=String(w.workoutType||w.type||'Тренування'),m=R((new Date(w.endDate)-new Date(w.startDate))/60000)||0;let k=R(ak>0?ak:hk),au;if(!k&&m){k=estK(t,m);au=1}return{t,m,k,sy:1,au,...wh(w)}}));if(!h.wo.length)delete h.wo});
+if(wt.length){wt.sort((a,b)=>new Date(a.startDate)-new Date(b.startDate));(S.hc[dk(new Date())]=S.hc[dk(new Date())]||{}).kg=r1(+wt[wt.length-1].value)}
+return{P1,P3,wk,wkc,got:ds.length}}
+async function hcSync(nd,quiet){const H=HL();
+if(!H){S.hcs={e:'У цій збірці немає модуля Health Connect (запасний варіант збірки). Дані вносяться вручну.'};save();if(!quiet)render();return}
+if(hcRun)return;hcRun=1;hcLast=Date.now();
+S.hcs={busy:1,t:(S.hcs||{}).t};if(!quiet)render();const n={},er=[],now=new Date(),CH=7,total=Math.ceil(nd/CH);let top=null,got=0;
+try{const av=await H.isAvailable();if(av&&av.available===false)throw new Error('Health Connect недоступний'+(av.reason?' ('+av.reason+')':''));
+if(!(quiet&&S.hcAuth)){try{await H.requestAuthorization({read:['steps','distance','calories','heartRate','restingHeartRate','sleep','weight','workouts'],write:[]})}catch(e){await H.requestAuthorization({read:['steps','distance','calories','heartRate','sleep'],write:[]})}}
+for(let k=0;k<total;k++){const o0=k*CH,o1=Math.min(nd,o0+CH)-1,from=new Date(now);from.setDate(from.getDate()-o1);from.setHours(0,0,0,0);
+let to=new Date(now);if(k>0){to.setDate(to.getDate()-(o0-1));to.setHours(0,0,0,0)}
+const pe=document.querySelector('#hcp');if(pe&&total>1)pe.textContent='Імпорт історії: '+(k+1)+' / '+total;
+const r=await hcChunk(H,from,to,n,er,k==0);got+=r.got;if(k==0)top=r;if(total>1){save();await new Promise(x=>setTimeout(x,0))}}
+const td=dk(now),dbg=[],fm=P=>Object.keys(P.by).map(g=>(g===P.src?'▶ ':'')+g+' '+R(P.by[g][td]||0)).join(' · '),{P1,P3,wk,wkc}=top,t0=new Date(now);t0.setHours(0,0,0,0);
+if(P1.src)dbg.push('Кроки сьогодні: '+fm(P1));if(P3.src)dbg.push('Активні ккал: '+fm(P3));
+try{const ag=await H.queryAggregated({dataType:'steps',startDate:t0.toISOString(),endDate:now.toISOString(),bucket:'day',aggregation:'sum'}),x=(ag.samples||[]).find(q=>dS(q)==td);if(x)dbg.push('Health Connect разом: '+R(+x.value||0)+' кроків')}catch(e){}
+wk.filter(w=>dS(w)==td).forEach(w=>dbg.push('Тренування '+String(w.workoutType||w.type||'')+': активні '+R(wkc(w))+' / HC '+R(+w.totalEnergyBurned||+w.calories||0)+' ккал'));
+S.hcs={t:Date.now(),n,er,dbg,srcs:Object.keys(P1.by).map(g=>[g,R(P1.by[g][td]||0)])};if(got)S.hcOn=true;S.hcAuth=(got||!er.length)?1:0;if(nd>=170&&got)S.hcHist=Date.now();save()}
+catch(e){S.hcs={t:Date.now(),e:String(e.message||e),n,er};S.hcAuth=0;save()}
+hcRun=0;
+if(!quiet||!(document.activeElement&&/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)))render()}
+function autoSync(f){if(S.hcAuto===false||!S.hcOn||!HL()||hcRun)return;if(!f&&Date.now()-hcLast<60000)return;if(!S.hcHist&&!hcHT){hcHT=1;hcSync(183,1);return}hcSync(3,1)}
+function setSrc(v){S.hcSrc=v||undefined;save();hcSync(183)}
+function setAuto(v){S.hcAuto=v;save();render();if(v)autoSync(1)}
+const syncCard=()=>{if(!NAT())return pwaAct();const s=S.hcs||{};return `<div class="card"><div class="sr2"><b>⌚ Синхронізація Health Connect</b><small>${s.t?new Date(s.t).toLocaleTimeString('uk-UA',{hour:'2-digit',minute:'2-digit'}):''}</small></div><small>Nothing X → Health Connect → цей додаток. Під час першого запуску дозвольте доступ до даних.</small>${(s.srcs&&s.srcs.length>1)?`<label style="margin-top:10px">Джерело кроків (якщо цифра не збігається з годинником)<select onchange="setSrc(this.value)"><option value="">Авто</option>${s.srcs.map(x=>`<option value="${esc(x[0])}" ${S.hcSrc===x[0]?'selected':''}>${esc(x[0])} — ${x[1]} сьогодні</option>`).join('')}</select></label>`:''}<button class="btn ghost" ${s.busy?'disabled':''} onclick="hcSync(7)">${s.busy?'Синхронізую…':'🔄 Синхронізувати з Nothing X'}</button><small id="hcp" style="display:block;margin-top:6px">${s.busy?'Зачекайте, іде синхронізація…':''}</small>${(()=>{const ks=Object.keys(S.hc).filter(k=>(S.hc[k]||{}).steps).sort();if(!ks.length)return'';const sp=Math.round((Date.now()-new Date(ks[0]))/864e5);return `<small style="display:block;margin-top:6px">Історія в додатку: з ${ks[0]} (${sp} дн.)${S.hcHist&&sp<100?'. Якщо потрібно більше: Health Connect → Дозволи додатків → КБЖВ → «Доступ до минулих даних».':''}</small><button class="btn ghost" style="margin-top:8px" ${s.busy?'disabled':''} onclick="hcSync(183)">📅 Завантажити історію (6 місяців)</button>`})()}<div class="sr2" style="margin-top:10px"><small>Автосинхронізація: при відкритті й кожні 5 хв</small><button class="btn ghost" style="width:auto;padding:6px 14px;margin:0" onclick="setAuto(${S.hcAuto===false})">${S.hcAuto===false?'Вимкнено':'Увімкнено'}</button></div>${s.e?`<small style="display:block;margin-top:8px">${esc(s.e)}</small>`:''}${s.t?`<small style="display:block;margin-top:8px">Отримано записів: ${esc(Object.entries(s.n||{}).map(e=>e[0]+' '+e[1]).join(', ')||'0')}${(s.er&&s.er.length)?'. Помилки: '+esc(s.er.join('; ')):''}</small>`:''}${(s.dbg&&s.dbg.length)?`<small style="display:block;margin-top:8px">${esc(s.dbg.join(' | '))}</small>`:''}</div>`};
+function deep(u){if(!u||u.indexOf('kbzhu://')!=0)return;const a=u.slice(8).replace(/\W/g,'');if(view!='t')go('t');if(a=='ai')openAI(0);else if(a=='cam')openAI(1);else if(a=='add')openAdd()}
+async function scan(){const B=window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.BarcodeScanner;
+if(B){try{const r=await B.scan(),c=r.barcodes&&r.barcodes[0]&&r.barcodes[0].rawValue;if(c)return byCode(c);return}catch(e){}}
+if('BarcodeDetector' in window&&navigator.mediaDevices)return camScan();
+const c=prompt('Введіть штрихкод (цифри під смужками)');if(c)byCode(c)}
+async function camScan(){const d=document.createElement('div');d.id='cam';d.innerHTML='<video autoplay playsinline muted></video><button class="btn ghost" style="width:80%">Закрити</button>';document.body.append(d);const v=d.querySelector('video');let on=1,s;const end=()=>{on=0;s&&s.getTracks().forEach(t=>t.stop());d.remove()};d.querySelector('button').onclick=end;
+try{s=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});v.srcObject=s;const bd=new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e']});(async function lp(){if(!on)return;try{const b=await bd.detect(v);if(b.length){end();return byCode(b[0].rawValue)}}catch(e){}setTimeout(lp,300)})()}catch(e){end();const c=prompt('Камера недоступна. Введіть штрихкод');if(c)byCode(c)}}
+let tx=0,ty=0,tg=null,swt='';const V=['t','a','r','s','p'];
+function swIn(k,d){if(k=='day'){mv(d);return}
+if(k=='act'){aso(-d);return}
+const o=k=='per'?['d','w','m','y']:['d','w','m'];const i=o.indexOf(k=='per'?per:ap)+d;if(i>=0&&i<o.length){if(k=='per')per=o[i];else ap=o[i];render()}}
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;const t=e.target.closest?e.target:null;tg=t&&t.closest('.chips2,input,select,textarea');const w=t&&t.closest('[data-sw]');swt=w?w.dataset.sw:''},{passive:true});
+document.addEventListener('touchend',e=>{if(!e.changedTouches.length||document.getElementById('cam')||tg)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+if(sh){const p=$('.pn');if(dy>110&&Math.abs(dx)<60&&p&&p.scrollTop<5)sc();return}
+if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.6){const d=dx<0?1:-1;if(swt)swIn(swt,d);else{const i=V.indexOf(view)+d;if(i>=0&&i<V.length)go(V[i])}}},{passive:true});
+try{const A=Capacitor.Plugins.App;A.addListener('appUrlOpen',e=>deep(e.url));A.getLaunchUrl().then(r=>r&&deep(r.url))}catch(e){}
+render();
+setTimeout(()=>autoSync(1),1500);setTimeout(()=>remSync(1),2500);
+try{Capacitor.Plugins.App.addListener('appStateChange',e=>{if(e.isActive){autoSync();wsync();remSync()}})}catch(e){}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)autoSync()});
+setInterval(()=>{if(!document.hidden)autoSync(1)},300000);
+
+if('serviceWorker' in navigator&&!window.Capacitor&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+</script></body></html>
