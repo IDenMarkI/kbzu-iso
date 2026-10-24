@@ -5,6 +5,10 @@
     <TextView android:id="@+id/wg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#8b93a7" android:textSize="13sp"/>
     <ProgressBar android:id="@+id/wb" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="6dp" android:layout_marginTop="6dp" android:progressDrawable="@drawable/wprog"/>
     <TextView android:id="@+id/wm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:textColor="#F3F5F9" android:textSize="12sp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="4dp">
+        <TextView android:id="@+id/ww" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textColor="#7dd3fc" android:textSize="12sp"/>
+        <TextView android:id="@+id/wwa" android:layout_width="wrap_content" android:layout_height="26dp" android:gravity="center" android:paddingStart="12dp" android:paddingEnd="12dp" android:text="💧 +500" android:textColor="#FFFFFF" android:textSize="12sp" android:background="@drawable/wbtn"/>
+    </LinearLayout>
     <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:gravity="bottom" android:layout_marginTop="8dp">
         <TextView android:id="@+id/wadd" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:gravity="center" android:text="＋" android:textColor="#FFFFFF" android:textSize="20sp" android:background="@drawable/wbtn"/>
         <TextView android:id="@+id/wai" android:layout_width="0dp" android:layout_height="38dp" android:layout_weight="1" android:layout_marginStart="8dp" android:gravity="center" android:text="✨ ШІ" android:textColor="#FFFFFF" android:textSize="15sp" android:background="@drawable/wbtn"/>
